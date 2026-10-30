@@ -28,7 +28,8 @@ Upsells later: 24/7 tenant enquiry chatbot, automated lead follow-up, AI listing
 - Audit: free
 - **Standard:** £500 one-off setup + £199/month ("less than £7 a day"). Listings fixed, local pages/FAQs/structured data, review routine, monthly Clairson Check + report, client dashboard, weekly listing monitoring.
 - **Premium:** £1,200 one-off setup + £399/month ("about £13 a day"). Everything in Standard plus: out-of-hours enquiry assistant on the website, WhatsApp assistant (WhatsApp Business API, small per-conversation cost), website improvements to the CURRENT site (never break the agency's property feed; rebuild only if they ask), monthly "you vs top 3 local rivals", review replies drafted for approval.
-- Decided 30 Oct 2026 (monthly was £250 before). Three-month minimum, then rolling with 30 days' notice. Clients can start on Standard and upgrade.
+- Decided 30 Oct 2026 (monthly was £250 before). **Billing:** month 1 = setup fee only (invoice when work starts); monthly fee starts in month 2. Monthly runs at least three months, then month to month with 30 days' notice. Clients can start on Standard and upgrade. Year one per client: Standard £500 + 11 × £199 = £2,689; Premium £1,200 + 11 × £399 = £5,589.
+- Website plan buttons open WhatsApp with the plan name pre-filled.
 - Enquiry assistant only says what the agency approves (fees, areas, hours, FAQs); anything else → takes details and passes the lead to the branch.
 Rough forecast (estimate, not a promise): 5 clients by month 6 ≈ £995–£1,995/mo; 15 by end of year 1 ≈ £2,985–£5,985/mo.
 

@@ -283,10 +283,20 @@ p{margin:0}
 .tier-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
 .badge{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:var(--clear-soft);color:var(--clear);white-space:nowrap}
 .tier h3{font-family:var(--display);font-weight:400;font-size:clamp(1.7rem,4vw,2.1rem);line-height:1.1}
-.tier-price{display:flex;flex-direction:column;gap:6px;padding-block:18px;border-block:1px solid var(--line);font-variant-numeric:tabular-nums}
-.tier-price .amount{font-family:var(--display);font-size:3.4rem;line-height:1}
-.tier-price .amount small{font-family:var(--body);font-size:1rem;color:var(--muted);margin-left:6px}
-.tier-price p{font-size:.93rem}
+.pay{display:grid;grid-template-columns:1fr 1fr;gap:12px;position:relative;font-variant-numeric:tabular-nums}
+.pay-step{border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0;background:var(--paper)}
+.pay-when{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.pay-amt{font-family:var(--display);font-size:clamp(2rem,6vw,2.7rem);line-height:1}
+.pay-amt small{font-family:var(--body);font-size:.85rem;color:var(--muted);margin-left:3px}
+.pay-what{font-size:.86rem;color:var(--muted);line-height:1.4}
+.pay-step.main{border-color:var(--clear);background:var(--clear-soft)}
+.pay-step.main .pay-when{color:var(--clear)}
+.pay::after{content:"→";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:28px;height:28px;border-radius:50%;background:var(--panel);border:1px solid var(--line);display:grid;place-items:center;font-size:.9rem;line-height:1;color:var(--clear)}
+.tier.premium .pay-step{background:color-mix(in srgb,var(--on-deep) 6%,transparent);border-color:color-mix(in srgb,var(--on-deep) 16%,transparent)}
+.tier.premium .pay-step.main{border-color:var(--signal);background:color-mix(in srgb,var(--signal) 14%,transparent)}
+.tier.premium .pay-when,.tier.premium .pay-amt small,.tier.premium .pay-what{color:var(--on-deep-muted)}
+.tier.premium .pay-step.main .pay-when{color:var(--signal)}
+.tier.premium .pay::after{background:var(--deep);border-color:color-mix(in srgb,var(--on-deep) 25%,transparent);color:var(--signal)}
 .plus{font-weight:600}
 .incl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;flex:1}
 .incl li{display:flex;gap:12px;align-items:flex-start;font-size:.97rem;color:var(--muted)}
@@ -297,8 +307,7 @@ p{margin:0}
 .tier.premium::before{content:"";position:absolute;z-index:-1;width:460px;height:460px;right:-170px;top:-190px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--clear) 38%,transparent),transparent 65%)}
 .tier.premium .eyebrow{color:var(--signal)}
 .tier.premium .badge{background:color-mix(in srgb,var(--signal) 20%,transparent);color:var(--signal)}
-.tier.premium .tier-price{border-color:color-mix(in srgb,var(--on-deep) 16%,transparent)}
-.tier.premium .tier-price .amount small,.tier.premium .muted,.tier.premium .incl li{color:var(--on-deep-muted)}
+.tier.premium .muted,.tier.premium .incl li{color:var(--on-deep-muted)}
 .tier.premium .incl li b,.tier.premium .plus{color:var(--on-deep)}
 .tier.premium .incl li::before{background-color:var(--signal)}
 
@@ -370,8 +379,8 @@ footer a{color:var(--on-deep)}
   "knowsAbout":["AI search visibility","Local SEO","Structured data","Online reviews","Letting agents"],
   "makesOffer":[
     {"@type":"Offer","name":"Free AI visibility check","price":"0","priceCurrency":"GBP"},
-    {"@type":"Offer","name":"Standard plan","description":"£500 one-off setup, then £199 a month: listings fixed, local pages, review routine, monthly AI visibility check and client dashboard.","price":"199","priceCurrency":"GBP"},
-    {"@type":"Offer","name":"Premium plan","description":"£1,200 one-off setup, then £399 a month: everything in Standard plus an out-of-hours enquiry assistant on the website and WhatsApp, website improvements and competitor tracking.","price":"399","priceCurrency":"GBP"}
+    {"@type":"Offer","name":"Standard plan","description":"£500 one-off setup in month 1, then £199 a month from month 2: listings fixed, local pages, review routine, monthly AI visibility check and client dashboard.","price":"199","priceCurrency":"GBP"},
+    {"@type":"Offer","name":"Premium plan","description":"£1,200 one-off setup in month 1, then £399 a month from month 2: everything in Standard plus an out-of-hours enquiry assistant on the website and WhatsApp, website improvements and competitor tracking.","price":"399","priceCurrency":"GBP"}
   ]
 }
 </script>
@@ -746,9 +755,9 @@ footer a{color:var(--on-deep)}
         <article class="tier" aria-labelledby="tier-standard">
           <div class="tier-head"><span class="eyebrow">Standard</span><span class="badge">Best place to start</span></div>
           <h3 id="tier-standard">Be seen clearly by AI</h3>
-          <div class="tier-price">
-            <div class="amount">£199<small>a month</small></div>
-            <p class="muted">+ £500 one-off setup · less than £7 a day</p>
+          <div class="pay" aria-label="Month 1: £500 one-off setup. From month 2: £199 a month.">
+            <div class="pay-step"><span class="pay-when">Month 1</span><span class="pay-amt">£500</span><span class="pay-what">One-off setup. We fix everything.</span></div>
+            <div class="pay-step main"><span class="pay-when">Month 2 onwards</span><span class="pay-amt">£199<small>/month</small></span><span class="pay-what">Less than £7 a day.</span></div>
           </div>
           <ul class="incl">
             <li><span><b>One clear version of you.</b> Listings fixed, duplicates merged, profiles claimed.</span></li>
@@ -758,15 +767,15 @@ footer a{color:var(--on-deep)}
             <li><span><b>Your own dashboard.</b> Your score, fixes and new reviews in one private page.</span></li>
             <li><span><b>Listings watched every week</b> so nothing drifts back.</span></li>
           </ul>
-          <a class="btn btn-primary" href="#contact">Start with Standard</a>
+          <a class="btn btn-primary" href="https://wa.me/447537175345?text=Hi%20Clairson%2C%20I%27m%20interested%20in%20the%20Standard%20plan%20for%20my%20agency.%20Can%20we%20start%20with%20the%20free%20check%3F" target="_blank" rel="noopener">Start with Standard</a>
         </article>
 
         <article class="tier premium" aria-labelledby="tier-premium">
           <div class="tier-head"><span class="eyebrow">Premium</span><span class="badge">Never miss an enquiry</span></div>
           <h3 id="tier-premium">Be seen, and answer every enquiry</h3>
-          <div class="tier-price">
-            <div class="amount">£399<small>a month</small></div>
-            <p class="muted">+ £1,200 one-off setup · about £13 a day</p>
+          <div class="pay" aria-label="Month 1: £1,200 one-off setup. From month 2: £399 a month.">
+            <div class="pay-step"><span class="pay-when">Month 1</span><span class="pay-amt">£1,200</span><span class="pay-what">One-off setup, including your assistant.</span></div>
+            <div class="pay-step main"><span class="pay-when">Month 2 onwards</span><span class="pay-amt">£399<small>/month</small></span><span class="pay-what">About £13 a day.</span></div>
           </div>
           <p class="plus">Everything in Standard, plus:</p>
           <ul class="incl">
@@ -776,10 +785,10 @@ footer a{color:var(--on-deep)}
             <li><span><b>You vs your top 3 local rivals,</b> tracked every month.</span></li>
             <li><span><b>Review replies written for you,</b> ready to approve in one tap.</span></li>
           </ul>
-          <a class="btn btn-signal" href="#contact">Ask about Premium</a>
+          <a class="btn btn-signal" href="https://wa.me/447537175345?text=Hi%20Clairson%2C%20I%27m%20interested%20in%20the%20Premium%20plan%20for%20my%20agency.%20Can%20we%20start%20with%20the%20free%20check%3F" target="_blank" rel="noopener">Ask about Premium</a>
         </article>
       </div>
-      <p class="fine" style="margin-top:18px">Three-month minimum on monthly plans, then rolling with 30 days' notice. You can start on Standard and upgrade to Premium later.</p>
+      <p class="fine" style="margin-top:18px">You pay nothing until you've seen your free check and agreed a plan. The monthly fee starts in month 2 and runs for at least three months, then month to month with 30 days' notice. You can start on Standard and upgrade to Premium later.</p>
     </div>
   </section>
 
@@ -823,6 +832,7 @@ footer a{color:var(--on-deep)}
         <details><summary>What is AI visibility?</summary><p>It's whether AI assistants like ChatGPT and Google's AI mention your agency when someone asks for a recommendation, and whether what they say about you is accurate.</p></details>
         <details><summary>What does the free check include?</summary><p>We ask the questions landlords and tenants ask on four AI assistants, check your listings on the sites they read, and send you a short report with your top fixes. No cost and no obligation.</p></details>
         <details><summary>What's the difference between Standard and Premium?</summary><p>Standard fixes how AI sees you: listings, local pages, reviews, a monthly check and your own dashboard. Premium adds an assistant that answers enquiries on your website and WhatsApp when the office is closed, improvements to your current website, and monthly tracking against your top three local rivals.</p></details>
+        <details><summary>When do I pay?</summary><p>The free check costs nothing. If you go ahead, you pay the one-off setup fee in month 1, while we fix your listings, pages and reviews. The monthly fee starts in month 2: £199 for Standard or £399 for Premium.</p></details>
         <details><summary>What does the enquiry assistant say to people?</summary><p>Only what you approve: your fees, areas, opening hours and answers to common questions. For anything else, it takes the person's details and passes them straight to your branch.</p></details>
         <details><summary>Will you need my passwords?</summary><p>No. You add us as a manager on your Google profile and similar accounts. You stay the owner and can remove us at any time.</p></details>
         <details><summary>Do I have to change my website provider?</summary><p>No. We prepare the pages and code, and your current provider adds them. If you'd like, we can talk to them directly.</p></details>
