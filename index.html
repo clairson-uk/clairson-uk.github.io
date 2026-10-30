@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0E2A2E">
+<title>Clairson</title>
+<meta name="description" content="Clairson helps letting and estate agents across the UK get found and recommended by ChatGPT, Google AI, Copilot and Perplexity. Free AI visibility check.">
+<meta property="og:title" content="Clairson · Be seen clearly by AI">
+<meta property="og:description" content="AI visibility for letting and estate agents across the UK. Free check, no obligation.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Clairson">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a clear pane. Quiet cool paper, a heritage Caslon voice, and one live "AI answer" panel as the proof. Teal = clarity, amber = you. */
+:root{
+  --paper:#F5F8F7; --panel:#FFFFFF; --ink:#0F1C20; --muted:#55676C; --line:#D6DFDE;
+  --clear:#1C6F75; --clear-soft:#DCEDEC; --signal:#B8661A; --signal-soft:#FAEBDA; --deep:#0E2A2E; --on-deep:#E6F0EF; --on-deep-muted:#9DB6B7;
+  --display:"Libre Caslon Display","Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --body:"Hanken Grotesk","Segoe UI",system-ui,-apple-system,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0B1517; --panel:#111F22; --ink:#E6EEED; --muted:#97AAAC; --line:#22363A;
+  --clear:#62C3C8; --clear-soft:#123033; --signal:#F0A458; --signal-soft:#3A2813; --deep:#071012; --on-deep:#E6F0EF; --on-deep-muted:#8FA9AA; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0B1517; --panel:#111F22; --ink:#E6EEED; --muted:#97AAAC; --line:#22363A;
+  --clear:#62C3C8; --clear-soft:#123033; --signal:#F0A458; --signal-soft:#3A2813; --deep:#071012; --on-deep:#E6F0EF; --on-deep-muted:#8FA9AA; color-scheme:dark}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--paper)}
+a{color:var(--clear)}
+:focus-visible{outline:3px solid var(--signal);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+section{padding-block:88px}
+h1,h2,h3{margin:0;text-wrap:balance}
+h1,h2{font-family:var(--display);font-weight:400;letter-spacing:-.01em;line-height:1.05}
+h1{font-size:clamp(2.8rem,8vw,5.4rem)}
+h2{font-size:clamp(2rem,5vw,3.2rem);max-width:20ch}
+h3{font-size:1.1rem;font-weight:600;line-height:1.3}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--clear)}
+.lead{font-size:1.2rem;color:var(--muted);max-width:56ch}
+.muted{color:var(--muted)}
+.stack{display:flex;flex-direction:column;gap:18px}
+.ai{color:var(--clear)}
+
+/* Header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.mark{font-family:var(--display);font-size:1.7rem;color:var(--ink);text-decoration:none;line-height:1}
+.nav{display:flex;align-items:center;gap:22px}
+.nav .navlink{color:var(--ink);text-decoration:none;font-weight:500;font-size:.95rem}
+.nav .navlink:hover{color:var(--clear)}
+.nav .navlink{display:none}
+@media (min-width:820px){.nav .navlink{display:inline}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 1rem/1 var(--body);text-decoration:none;border-radius:999px;padding:15px 24px;border:1px solid transparent;cursor:pointer;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--ink);color:var(--paper)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-small{padding:10px 16px;font-size:.9rem}
+
+/* Hero */
+.hero{padding-block:72px 96px}
+.hero-grid{display:grid;gap:56px;align-items:center}
+@media (min-width:960px){.hero-grid{grid-template-columns:1.05fr .95fr}}
+.hero-copy{display:flex;flex-direction:column;gap:26px;min-width:0}
+.hero h1 em{font-style:italic;color:var(--clear)}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.fine{font-size:.9rem;color:var(--muted)}
+
+/* AI answer panel */
+.answer{background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:0 30px 60px -40px rgba(15,40,45,.45);overflow:hidden;min-width:0}
+.answer-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.answer-bar .eyebrow{color:var(--muted)}
+.toggle{display:inline-flex;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:3px}
+.toggle button{font:600 .82rem/1 var(--body);border:0;background:transparent;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
+.toggle button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.answer-body{padding:22px 20px 20px;display:flex;flex-direction:column;gap:16px}
+.q{align-self:flex-end;background:var(--clear-soft);color:var(--ink);border-radius:16px 16px 4px 16px;padding:12px 16px;max-width:88%;font-size:.98rem}
+.a{font-family:var(--mono);font-size:.86rem;line-height:1.55;color:var(--ink);display:flex;flex-direction:column;gap:10px}
+.a ol{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.a li{display:grid;grid-template-columns:22px 1fr;gap:8px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);transition:background .3s,border-color .3s}
+.a li .n{color:var(--muted)}
+.a li.you{background:var(--signal-soft);border-color:var(--signal)}
+.a li.you strong{color:var(--signal)}
+.missing{font-family:var(--body);font-size:.9rem;padding:10px 12px;border-radius:10px;background:var(--paper);border:1px dashed var(--line);color:var(--muted)}
+.missing strong{color:var(--ink)}
+.caption{font-size:.78rem;color:var(--muted);padding:0 20px 16px}
+
+/* Shift */
+.flow{margin-top:44px;display:grid;gap:18px;align-items:center}
+@media (min-width:900px){.flow{grid-template-columns:1.3fr auto .8fr auto .9fr}}
+.sources{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--mono);font-size:.8rem;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:var(--panel)}
+.arrow{font-family:var(--display);font-size:2rem;color:var(--clear);text-align:center;line-height:1}
+@media (max-width:899px){.arrow{transform:rotate(90deg)}}
+.node{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}
+.node .eyebrow{display:block;margin-bottom:6px}
+.split{display:grid;gap:40px}
+@media (min-width:900px){.split{grid-template-columns:1fr 1fr;gap:72px;align-items:start}}
+
+/* Findings sheet */
+.sheet{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.row{display:grid;grid-template-columns:1fr auto;gap:6px 16px;padding:18px 20px;border-top:1px solid var(--line)}
+.row:first-child{border-top:0}
+.row p{grid-column:1/-1;color:var(--muted);font-size:.95rem}
+.pill{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;align-self:start;white-space:nowrap}
+.pill.fix{background:var(--signal-soft);color:var(--signal)}
+
+/* Services */
+.services{margin-top:44px;display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+@media (min-width:700px){.services{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1000px){.services{grid-template-columns:repeat(3,1fr)}}
+.svc{background:var(--panel);padding:26px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.svc .muted{font-size:.97rem}
+.svc.free{background:var(--clear-soft)}
+.svc .tag{font-family:var(--mono);font-size:.75rem;color:var(--clear);letter-spacing:.06em;text-transform:uppercase}
+
+/* Check / score */
+.deep{background:var(--deep);color:var(--on-deep)}
+.deep .eyebrow{color:var(--signal)}
+.deep .lead,.deep .muted{color:var(--on-deep-muted)}
+.deep h2{color:var(--on-deep)}
+.score{margin-top:40px;display:grid;gap:28px}
+@media (min-width:900px){.score{grid-template-columns:1fr 1.2fr;gap:64px;align-items:center}}
+.formula{font-family:var(--display);font-size:clamp(2rem,6vw,3.4rem);line-height:1.1}
+.formula span{font-family:var(--mono);font-size:.9rem;display:block;color:var(--on-deep-muted);margin-top:8px;letter-spacing:.04em}
+.bands{display:grid;grid-template-columns:20fr 30fr 25fr 25fr;gap:4px;font-variant-numeric:tabular-nums}
+.band{padding:14px 12px;border-radius:8px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.band b{font-weight:600;font-size:.95rem}
+.band small{font-family:var(--mono);font-size:.72rem;opacity:.85}
+.b1{background:#5A2E24;color:#F6DDD5}.b2{background:#5E4A1E;color:#F5E6C6}.b3{background:#1F4D52;color:#D3EEEF}.b4{background:#2C6A55;color:#D7F2E6}
+.platforms{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.platforms .chip{background:transparent;border-color:rgba(230,240,239,.25);color:var(--on-deep)}
+
+/* Steps */
+.steps{margin:44px 0 0;padding:0;list-style:none;display:grid;gap:14px}
+@media (min-width:900px){.steps{grid-template-columns:repeat(5,1fr)}}
+.steps li{border-top:2px solid var(--ink);padding-top:16px;display:flex;flex-direction:column;gap:8px}
+.steps li:last-child{border-top-color:var(--clear)}
+.when{font-family:var(--mono);font-size:.78rem;color:var(--clear);letter-spacing:.06em;text-transform:uppercase}
+.steps p{color:var(--muted);font-size:.95rem}
+
+/* Pricing */
+.prices{margin-top:44px;display:grid;gap:16px}
+@media (min-width:860px){.prices{grid-template-columns:repeat(3,1fr)}}
+.price{border:1px solid var(--line);border-radius:16px;padding:26px;background:var(--panel);display:flex;flex-direction:column;gap:12px}
+.price .amount{font-family:var(--display);font-size:2.6rem;line-height:1}
+.price .amount small{font-family:var(--body);font-size:.95rem;color:var(--muted)}
+.price ul{margin:0;padding-left:18px;color:var(--muted);font-size:.95rem;display:flex;flex-direction:column;gap:6px}
+.price.featured{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink) inset}
+
+/* Promise + name */
+.promise{font-family:var(--display);font-size:clamp(1.7rem,4.4vw,2.8rem);line-height:1.2;max-width:26ch}
+.name-story{display:grid;gap:32px;align-items:center}
+@media (min-width:900px){.name-story{grid-template-columns:1.1fr 1fr;gap:72px}}
+.bigmark{font-family:var(--display);font-size:clamp(4rem,16vw,9.5rem);line-height:.9;letter-spacing:-.02em}
+.bigmark .ai{color:var(--clear);border-bottom:4px solid var(--signal)}
+
+/* FAQ */
+.faq{margin-top:36px;border-top:1px solid var(--line)}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;padding:20px 0;font-weight:600;font-size:1.05rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--display);font-size:1.6rem;line-height:1;color:var(--clear)}
+details[open] summary::after{content:"–"}
+details p{padding:0 0 22px;color:var(--muted);max-width:66ch}
+
+/* Contact */
+.contact{background:var(--deep);color:var(--on-deep)}
+.contact .eyebrow{color:var(--signal)}
+.contact h2{color:var(--on-deep)}
+.contact .lead{color:var(--on-deep-muted)}
+.contact-card{background:rgba(255,255,255,.05);border:1px solid rgba(230,240,239,.18);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:20px;min-width:0}
+.contact-card dl{margin:0;display:grid;gap:6px 18px}
+.contact-card dt{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);margin-top:10px}
+.contact-card dd{margin:0;font-size:1.15rem;overflow-wrap:anywhere}
+.contact-card dd a{color:var(--on-deep)}
+.phone-line{display:flex;align-items:center;flex-wrap:wrap;gap:10px}
+.copy{font:500 .8rem/1 var(--body);background:transparent;color:var(--on-deep);border:1px solid rgba(230,240,239,.3);border-radius:999px;padding:7px 12px;cursor:pointer}
+.btn-signal{background:var(--signal);color:#1B1206}
+footer{background:var(--deep);color:var(--on-deep-muted);border-top:1px solid rgba(230,240,239,.12);font-size:.88rem}
+footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+footer .mark{font-size:1.2rem;color:var(--on-deep)}
+footer a{color:var(--on-deep)}
+.privacy{padding-block:48px}
+.privacy ul{margin:0 0 22px;padding-left:20px;color:var(--muted);max-width:70ch;display:flex;flex-direction:column;gap:8px}
+.privacy li strong{color:var(--ink)}
+</style>
+</head>
+<body>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"ProfessionalService",
+  "name":"Clairson",
+  "slogan":"Be seen clearly by AI",
+  "description":"Clairson helps letting and estate agencies get found and recommended by AI assistants such as ChatGPT, Google AI, Microsoft Copilot and Perplexity.",
+  "founder":{"@type":"Person","name":"Isreal Jackson"},
+  "telephone":"+44 7537 175345",
+  "email":"clairson.uk@gmail.com",
+  "address":{"@type":"PostalAddress","addressLocality":"Milton Keynes","addressRegion":"Buckinghamshire","addressCountry":"GB"},
+  "areaServed":[{"@type":"Country","name":"United Kingdom"},{"@type":"City","name":"Milton Keynes"}],
+  "knowsAbout":["AI search visibility","Local SEO","Structured data","Online reviews","Letting agents"],
+  "makesOffer":{"@type":"Offer","name":"Free AI visibility check","price":"0","priceCurrency":"GBP"}
+}
+</script>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="Clairson home">Cl<span class="ai">ai</span>rson</a>
+    <nav class="nav" aria-label="Main">
+      <a class="navlink" href="#how">How it works</a>
+      <a class="navlink" href="#services">Services</a>
+      <a class="navlink" href="#pricing">Pricing</a>
+      <a class="navlink" href="#faq">FAQ</a>
+      <a class="btn btn-primary btn-small" href="#contact">Free check</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">AI visibility for letting &amp; estate agents · Across the UK</span>
+        <h1>Be seen <em>clearly</em> by AI.</h1>
+        <p class="lead">Landlords and tenants now ask ChatGPT, Google, Copilot and Perplexity which agent to trust. Clairson makes sure your agency is in the answer, and that what AI says about you is right.</p>
+        <div class="ctas">
+          <a class="btn btn-primary" href="#contact">Get your free AI visibility check</a>
+          <a class="btn btn-ghost" href="#how">How it works</a>
+        </div>
+        <p class="fine">Free check · No obligation · UK-wide, based in Milton Keynes</p>
+      </div>
+
+      <div class="answer" aria-label="Illustration of an AI assistant's answer">
+        <div class="answer-bar">
+          <span class="eyebrow">AI assistant</span>
+          <div class="toggle" role="group" aria-label="Show before or after">
+            <button type="button" id="t-before" aria-pressed="true">Before</button>
+            <button type="button" id="t-after" aria-pressed="false">After</button>
+          </div>
+        </div>
+        <div class="answer-body">
+          <div class="q">Who's the best letting agent in <span class="town">Milton Keynes</span>?</div>
+          <div class="a" id="answer">
+            <span>Here are well-reviewed letting agents in <span class="town">Milton Keynes</span>:</span>
+            <ol id="answer-list"></ol>
+            <div class="missing" id="missing"><strong>Your agency:</strong> not mentioned, even with great Google reviews.</div>
+          </div>
+        </div>
+        <p class="caption">Illustration only. Real answers vary, and no one can guarantee a position.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="shift" style="padding-top:24px">
+    <div class="wrap">
+      <div class="split">
+        <div class="stack">
+          <span class="eyebrow">What changed</span>
+          <h2>People don't just search any more. They ask.</h2>
+        </div>
+        <div class="stack">
+          <p class="lead">An AI assistant doesn't show ten blue links. It reads what the web says about you, decides who looks trustworthy, and gives one short answer.</p>
+          <p class="muted">If your Google profile, comparison-site listings and website tell different stories, AI can't tell which version of you is real. So it recommends someone else.</p>
+        </div>
+      </div>
+      <div class="flow" aria-label="How AI builds an answer">
+        <div class="node">
+          <span class="eyebrow">What AI reads</span>
+          <div class="sources">
+            <span class="chip">Google Business Profile</span><span class="chip">GetAgent</span><span class="chip">Zoopla</span><span class="chip">Rightmove</span><span class="chip">Bing Places</span><span class="chip">Your website</span><span class="chip">Reviews</span>
+          </div>
+        </div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="node"><span class="eyebrow">AI assistant</span><strong>Weighs which sources agree</strong></div>
+        <div class="arrow" aria-hidden="true">→</div>
+        <div class="node"><span class="eyebrow">The answer</span><strong>Three to five names. Is yours one?</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="findings" style="background:var(--panel);border-block:1px solid var(--line)">
+    <div class="wrap split">
+      <div class="stack">
+        <span class="eyebrow">What we usually find</span>
+        <h2>Great agencies, invisible for fixable reasons.</h2>
+        <p class="muted">These come up again and again when we check local agencies. None of them are about how good you are. All of them are fixable.</p>
+      </div>
+      <div class="sheet">
+        <div class="row"><h3>Duplicate listings</h3><span class="pill fix">Fixable</span><p>Your reputation split across several pages, some empty, some misspelt.</p></div>
+        <div class="row"><h3>Names and addresses that don't match</h3><span class="pill fix">Fixable</span><p>Two trading names or three addresses online, so AI can't connect them.</p></div>
+        <div class="row"><h3>Unclaimed profiles</h3><span class="pill fix">Fixable</span><p>No phone number, no description, and nobody replying to reviews.</p></div>
+        <div class="row"><h3>Reviews only on Google</h3><span class="pill fix">Fixable</span><p>Comparison sites show a handful of old reviews instead of your real reputation.</p></div>
+        <div class="row"><h3>No local pages</h3><span class="pill fix">Fixable</span><p>Nothing that ties you to the towns and neighbourhoods you actually cover.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="stack">
+        <span class="eyebrow">What Clairson does</span>
+        <h2>Everything AI needs to recommend you.</h2>
+      </div>
+      <div class="services">
+        <article class="svc free"><span class="tag">Free</span><h3>AI visibility check</h3><p class="muted">We ask the questions your customers ask on four AI assistants and check every listing they read.</p></article>
+        <article class="svc"><span class="tag">Listings</span><h3>One clear version of you</h3><p class="muted">One name, address and phone number everywhere. Duplicates merged, profiles claimed and completed.</p></article>
+        <article class="svc"><span class="tag">Website</span><h3>Local pages AI understands</h3><p class="muted">Area pages, FAQs and structured data, handed to your web provider ready to paste in.</p></article>
+        <article class="svc"><span class="tag">Reviews</span><h3>A steady review routine</h3><p class="muted">QR codes, message templates and reply templates, so real customers review you where it counts.</p></article>
+        <article class="svc"><span class="tag">Monthly</span><h3>Re-test and report</h3><p class="muted">The same check every month, with a one-page report showing what changed and what's next.</p></article>
+        <article class="svc"><span class="tag">No passwords</span><h3>Safe access</h3><p class="muted">You add us as a manager on your profiles. You stay in control of every account.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="deep" id="check">
+    <div class="wrap">
+      <div class="stack">
+        <span class="eyebrow">The Clairson Check</span>
+        <h2>A score you can track, month after month.</h2>
+        <p class="lead">Six recommendation questions, asked the same way every time, across four AI assistants. Each answer scores up to 3 points.</p>
+      </div>
+      <div class="score">
+        <div>
+          <div class="formula">6 × 4 × 3 = 72<span>QUESTIONS × AI ASSISTANTS × POINTS</span></div>
+          <div class="platforms"><span class="chip">ChatGPT</span><span class="chip">Google AI</span><span class="chip">Microsoft Copilot</span><span class="chip">Perplexity</span></div>
+        </div>
+        <div class="stack">
+          <div class="bands" role="img" aria-label="Score bands: 0 to 20 percent Invisible, 21 to 50 Weak, 51 to 75 Good, 76 to 100 Strong">
+            <div class="band b1"><b>Invisible</b><small>0–20%</small></div>
+            <div class="band b2"><b>Weak</b><small>21–50%</small></div>
+            <div class="band b3"><b>Good</b><small>51–75%</small></div>
+            <div class="band b4"><b>Strong</b><small>76–100%</small></div>
+          </div>
+          <p class="muted">3 points for a top-three mention, 2 for positions four to ten, 1 for a passing mention. We also check that AI gets your address, phone number and services right.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <div class="stack">
+        <span class="eyebrow">How it works</span>
+        <h2>Your first month, week by week.</h2>
+      </div>
+      <ol class="steps">
+        <li><span class="when">Week 1</span><h3>Baseline</h3><p>The full Clairson Check, with screenshots. This is your "before".</p></li>
+        <li><span class="when">Week 2</span><h3>Listings</h3><p>Google, Bing, Apple, GetAgent and directories made consistent and complete.</p></li>
+        <li><span class="when">Week 3</span><h3>Website pack</h3><p>Area pages, FAQs and structured data, ready for your web provider.</p></li>
+        <li><span class="when">Week 4</span><h3>Reviews</h3><p>Your review routine set up for staff, with replies covered.</p></li>
+        <li><span class="when">Every month</span><h3>Re-test</h3><p>Same check, new score, one-page report. You see exactly what moved.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="pricing" style="background:var(--panel);border-block:1px solid var(--line)">
+    <div class="wrap">
+      <div class="stack">
+        <span class="eyebrow">Pricing</span>
+        <h2>Start free. Pay when you see the plan.</h2>
+      </div>
+      <div class="prices">
+        <div class="price"><span class="eyebrow">Step 1</span><h3>AI visibility check</h3><div class="amount">£0</div><ul><li>Four AI assistants tested</li><li>Listings reviewed</li><li>Short report with your top fixes</li></ul></div>
+        <div class="price featured"><span class="eyebrow">Step 2</span><h3>Setup</h3><div class="amount">£500 <small>from, one-off</small></div><ul><li>Listings fixed and claimed</li><li>Website pack</li><li>Review routine</li></ul></div>
+        <div class="price"><span class="eyebrow">Step 3</span><h3>Monthly</h3><div class="amount">£250 <small>from, per month</small></div><ul><li>Monthly Clairson Check</li><li>New local content</li><li>Listing monitoring and report</li></ul></div>
+      </div>
+      <p class="fine" style="margin-top:18px">Three-month minimum on monthly plans, then rolling with 30 days' notice.</p>
+    </div>
+  </section>
+
+  <section id="promise">
+    <div class="wrap stack" style="gap:22px">
+      <span class="eyebrow">Our promise</span>
+      <p class="promise">We improve and track how AI sees you. No one can guarantee an AI will name you first, and anyone who promises that is guessing.</p>
+      <p class="muted">No fake reviews, ever. No changes without your approval. A dated record of everything we do.</p>
+    </div>
+  </section>
+
+  <section id="name" style="padding-top:0">
+    <div class="wrap name-story">
+      <div class="bigmark" aria-label="Clairson">Cl<span class="ai">ai</span>rson</div>
+      <div class="stack">
+        <span class="eyebrow">The name</span>
+        <p class="lead"><em>Clair</em> is French for clear. Being seen clearly is what we do. Look closer and you'll find the <span class="ai">ai</span> inside.</p>
+        <p class="muted">Clairson was founded in Milton Keynes by Isreal Jackson, MSc Digital Marketing (2026). We work with agencies across the UK, a small number at a time, so you always deal with the person doing the work.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" style="padding-top:0">
+    <div class="wrap">
+      <div class="stack">
+        <span class="eyebrow">Questions</span>
+        <h2>Straight answers.</h2>
+      </div>
+      <div class="faq">
+        <details><summary>What is AI visibility?</summary><p>It's whether AI assistants like ChatGPT and Google's AI mention your agency when someone asks for a recommendation, and whether what they say about you is accurate.</p></details>
+        <details><summary>What does the free check include?</summary><p>We ask the questions landlords and tenants ask on four AI assistants, check your listings on the sites they read, and send you a short report with your top fixes. No cost and no obligation.</p></details>
+        <details><summary>Will you need my passwords?</summary><p>No. You add us as a manager on your Google profile and similar accounts. You stay the owner and can remove us at any time.</p></details>
+        <details><summary>Do I have to change my website provider?</summary><p>No. We prepare the pages and code, and your current provider adds them. If you'd like, we can talk to them directly.</p></details>
+        <details><summary>How long until I see results?</summary><p>Listing fixes usually show within days to weeks. AI answers can take weeks to months to change, which is why we re-test and report every month.</p></details>
+        <details><summary>Do you write reviews?</summary><p>Never. We set up a routine so your real customers leave reviews. Fake reviews break the rules of every platform and can get you removed.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap split">
+      <div class="stack">
+        <span class="eyebrow">Free AI visibility check</span>
+        <h2>Find out what AI says about your agency.</h2>
+        <p class="lead">Call, message or email with your agency's name. We'll run the check and walk you through the results in person, on a video call or by email.</p>
+      </div>
+      <div class="contact-card">
+        <dl>
+          <dt>Phone and WhatsApp</dt>
+          <dd><span class="phone-line"><a href="tel:+447537175345" id="phone">07537 175345</a><button type="button" class="copy" id="copy-phone">Copy</button></span></dd>
+          <dt>Email</dt>
+          <dd><span class="phone-line"><a href="mailto:clairson.uk@gmail.com?subject=Free%20AI%20visibility%20check" id="email">clairson.uk@gmail.com</a><button type="button" class="copy" id="copy-email">Copy</button></span></dd>
+          <dt>Areas covered</dt>
+          <dd>Anywhere in the UK, remotely. In person across Milton Keynes and nearby towns.</dd>
+        </dl>
+        <a class="btn btn-signal" href="https://wa.me/447537175345?text=Hi%20Clairson%2C%20I%27d%20like%20a%20free%20AI%20visibility%20check%20for%20my%20agency." target="_blank" rel="noopener">Message on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="privacy" id="privacy">
+    <div class="wrap">
+      <details>
+        <summary>Privacy notice</summary>
+        <ul>
+          <li><strong>Who we are:</strong> Clairson is run by Isreal Jackson, a sole trader based in Milton Keynes, UK. Contact: clairson.uk@gmail.com or 07537 175345.</li>
+          <li><strong>What we collect:</strong> business contact details of letting and estate agencies and their staff (name, job title, work email, work phone), taken from public sources such as agency websites, Google, GetAgent, Zoopla and Companies House, plus anything you send us.</li>
+          <li><strong>Why:</strong> to tell agencies about our services (legitimate interests) and to deliver work you have agreed to (contract).</li>
+          <li><strong>Sharing:</strong> we never sell your data. We use Google (Gmail) for email and GitHub to host this website.</li>
+          <li><strong>How long:</strong> up to two years after our last contact. If you ask us to stop, we keep only your details on a do-not-contact list so we never contact you again.</li>
+          <li><strong>Your rights:</strong> you can ask to see, correct or delete your data, or object to marketing at any time. Email us and we will stop. You can also complain to the Information Commissioner's Office at ico.org.uk.</li>
+          <li><strong>This website:</strong> no cookies and no tracking. Fonts load from Google Fonts, which receives your IP address.</li>
+          <li><strong>Updated:</strong> 30 October 2026.</li>
+        </ul>
+      </details>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap"><span class="mark">Cl<span class="ai">ai</span>rson</span><span>© 2026 Clairson · AI visibility for letting &amp; estate agents · United Kingdom · <a href="#privacy">Privacy</a></span></div>
+</footer>
+
+<script>
+(function(){
+  var before=[
+    {t:"Agency A",d:"strong reviews, consistent listings"},
+    {t:"Agency B",d:"well-reviewed on comparison sites"},
+    {t:"Agency C",d:"clear local area pages"}
+  ];
+  var after=[
+    {t:"Your agency",d:"5-star reviews, consistent listings, clear local area pages",you:true},
+    {t:"Agency A",d:"strong reviews, consistent listings"},
+    {t:"Agency B",d:"well-reviewed on comparison sites"}
+  ];
+  var list=document.getElementById("answer-list"),miss=document.getElementById("missing"),
+      bB=document.getElementById("t-before"),bA=document.getElementById("t-after");
+  function render(items,isAfter){
+    list.innerHTML="";
+    items.forEach(function(it,i){
+      var li=document.createElement("li");if(it.you)li.className="you";
+      var n=document.createElement("span");n.className="n";n.textContent=(i+1)+".";
+      var b=document.createElement("span");var s=document.createElement("strong");s.textContent=it.t;
+      b.appendChild(s);b.appendChild(document.createTextNode(" · "+it.d));
+      li.appendChild(n);li.appendChild(b);list.appendChild(li);
+    });
+    miss.hidden=isAfter;bB.setAttribute("aria-pressed",String(!isAfter));bA.setAttribute("aria-pressed",String(isAfter));
+  }
+  bB.addEventListener("click",function(){render(before,false)});
+  bA.addEventListener("click",function(){render(after,true)});
+  render(before,false);
+  var towns=["Milton Keynes","Coventry","Leicester","Manchester","Bristol","Leeds"],ti=0,tEls=document.querySelectorAll(".town");
+  var still=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(!still){setInterval(function(){ti=(ti+1)%towns.length;tEls.forEach(function(e){e.textContent=towns[ti]})},2600)}
+  var ce=document.getElementById("copy-email");
+  ce.addEventListener("click",function(){
+    var ok=function(){ce.textContent="Copied";setTimeout(function(){ce.textContent="Copy"},1600)};
+    var sel=function(){var r=document.createRange();r.selectNodeContents(document.getElementById("email"));var s=getSelection();s.removeAllRanges();s.addRange(r);ce.textContent="Selected"};
+    try{navigator.clipboard.writeText("clairson.uk@gmail.com").then(ok,sel)}catch(e){sel()}
+  });
+  var cp=document.getElementById("copy-phone");
+  cp.addEventListener("click",function(){
+    var done=function(){cp.textContent="Copied";setTimeout(function(){cp.textContent="Copy"},1600)};
+    try{navigator.clipboard.writeText("07537 175345").then(done,function(){selectPhone()})}catch(e){selectPhone()}
+    function selectPhone(){var r=document.createRange();r.selectNodeContents(document.getElementById("phone"));var s=getSelection();s.removeAllRanges();s.addRange(r);cp.textContent="Selected"}
+  });
+})();
+</script>
+</body>
+</html>
