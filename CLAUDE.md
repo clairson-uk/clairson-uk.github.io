@@ -4,7 +4,8 @@ Read this first in every session. It is the business brain for this repo.
 
 ## 1. Who and what
 - **Business name:** Clairson ("Be seen clearly by AI"). Cl-ai-rson: *clair* = clear, with "ai" hidden inside. Checked 30 Oct 2026: no Companies House match; only UK trade mark for CLAIRSON is dead (1984, class 20). Always call the business "Clairson". Isreal Jackson is the founder and signs emails. Website: https://clairson-uk.github.io (live since 30 Oct 2026). Email: clairson.uk@gmail.com.
-- **Owner:** Isreal Jackson, Milton Keynes, UK. MSc Digital Marketing (2026): SEO, data analysis, trends, competition. Doesn't drive, so local work must be walkable or reachable by bus.
+- **Owner:** Isreal Jackson, lives in Wolverton, Milton Keynes, UK. MSc Digital Marketing (2026): SEO, data analysis, trends, competition. Doesn't drive.
+- **Partner:** a business partner is joining (Claude Max plan) to build the tech. Shared plan: https://claude.ai/artifact/B6XwYPfb2GeqdYXFRo6yoS. Proposed split: Isreal = sales and client relationships; partner = dashboard, enquiry assistant, website pack templates. Profit split and a written partnership agreement to be agreed before the first client pays.
 - **Business:** helps **letting and estate agencies** get found and recommended by AI tools (ChatGPT, Google AI Overviews/Gemini, Microsoft Copilot, Perplexity). Wider goal: fill any AI gap agencies have (chatbots, lead follow-up, AI listings, CRM automation).
 - **Why agencies:** already-established businesses with marketing budgets; each landlord/tenant is worth a lot; owners lack time/know-how. Pitch: "You already have the business. I give you the one thing you're missing."
 - **Core pitch line:** "Your customers love you, but AI doesn't know you exist." / "If you're not there, you're not there."
@@ -72,7 +73,7 @@ Directory sources used: https://www.getagent.co.uk/area/milton-keynes/estate-age
 | Northwood Newport Pagnell | 17 St John St, MK16 8HE | 01908 216644 | 4.2 (135) | Fairly healthy ("Northwood MK Ltd" 4.4 on GetAgent); not on Zoopla MK lettings list | — |
 | Youngs Property Management | 89c High St, Newport Pagnell MK16 8AB | 01908 210080 | 4.3 (23) | Not on GetAgent/Zoopla lists; few reviews | — |
 
-Walk-in route (Bletchley, ~10am): inspired → Aztec → Urban & Rural → Reynolds.
+Outreach is remote-first everywhere, including Milton Keynes (decided 30 Oct 2026): email where the contact rule allows → call two working days later → 15-minute video call (Google Meet or Zoom). Target: 3 new contacts a day plus follow-up calls. Walk-ins only for agencies walkable from Wolverton (Wolverton, New Bradwell, Stony Stratford). The Bletchley four above are now email/call leads.
 
 Door script: 1) "Hi, I'm Isreal, a local digital marketing graduate. Have you got two minutes? I found something about how you show up online." 2) Show their specific problem on the phone. 3) "I'm doing free AI visibility checks for a few local agencies this week. Can I leave my details for the manager?" 4) Get manager name + email; log it.
 
@@ -82,10 +83,10 @@ Door script: 1) "Hi, I'm Isreal, a local digital marketing graduate. Have you go
 - Audit Kit doc: https://claude.ai/artifact/KtrLTK2h4WrKY5d9GfupRt · Business plan doc: https://claude.ai/artifact/X9Da9KoA9iTaVZy97DzhBx · Pre-audit plan: https://claude.ai/artifact/EUmFpHpBeqyRds6sA8aGAC
 
 ## 9. Repo plan
-1. `clairson-uk.github.io` (this repo): one-page site, single index.html, GitHub Pages.
-2. `ij-audits` (next): this CLAUDE.md + `/agencies/<name>/` folders with audit notes, scores, reports, dated; git history = proof of progress.
-3. `ij-client-fixes` (when first client signs): schema JSON-LD, area pages, FAQ pages per client.
-4. `ij-chatbot-demo` (after 2–3 clients): demo tenant enquiry chatbot.
+1. `clairson-uk/clairson-uk.github.io` (this repo): PUBLIC website only (single index.html, GitHub Pages). Every file here is published, so nothing private goes in it.
+2. `clairson-uk/clairson` (to be created, PRIVATE): this CLAUDE.md, the partner's project (moved from the old "ijackson" repo and renamed to Clairson), `/clients/<agency>/` audit notes and fixes, client dashboard, enquiry assistant demo. When it exists, move CLAUDE.md there and keep only website files here.
+3. The old ijackson repo is archived after the move is checked.
+Team rules: never push straight to `main`; one branch per change, then a pull request the other person approves. Brand is always "Clairson"; "Isreal Jackson" only where it means the founder. Retired: "iseajackson", hello@iseajackson.co.uk, 07879 229157.
 
 ## 10. Rules
 - Cold email only limited companies and LLPs (with an opt-out line). Sole traders and partnerships: call first, email only after they agree. Unknown: check Companies House first.
