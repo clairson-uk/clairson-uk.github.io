@@ -27,8 +27,11 @@ Upsells later: 24/7 tenant enquiry chatbot, automated lead follow-up, AI listing
 ## 4. Pricing (starting point, rough)
 - Audit: free
 - Setup & fixes: ~£500 one-off
-- Monthly: £250–£500
-Rough forecast (estimate, not a promise): 5 clients by month 6 ≈ £1,500–£2,500/mo; 15–20 by end of year 1 ≈ £4,000–£10,000/mo.
+- Monthly: from £199 (changed from £250 on 30 Oct 2026; site says "£199 from, per month" and "Less than £7 a day"). Bigger or multi-branch agencies up to ~£500.
+- Three-month minimum on monthly plans, then rolling with 30 days' notice.
+Rough forecast (estimate, not a promise): 5 clients by month 6 ≈ £995–£2,500/mo; 15–20 by end of year 1 ≈ £2,985–£10,000/mo.
+
+Website notes: day/night toggle (defaults to day on every device, remembers the visitor's choice), mobile menu, founder section without the MSc line. Edit the source, then rebuild index.html and push.
 
 ## 5. Audit system (follow exactly)
 Platforms: ChatGPT, Google (AI Overview + Gemini), Copilot, Perplexity. Use a private/logged-out window, note date/time, screenshot every answer.

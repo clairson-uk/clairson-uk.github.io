@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en-GB">
+<html lang="en-GB" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -15,29 +15,37 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script>
+(function(){var t="light";try{var s=localStorage.getItem("clairson-theme");if(s==="dark"||s==="light")t=s}catch(e){}document.documentElement.setAttribute("data-theme",t)})();
+</script>
 <style>
-/* Layout: a clear pane. Quiet cool paper, a heritage Caslon voice, and one live "AI answer" panel as the proof. Teal = clarity, amber = you. */
+/* Layout: a clear pane. Quiet cool paper, a heritage Caslon voice, one live "AI answer" panel as proof, and line drawings of the agent's own world. Teal = clarity, amber = you. */
 :root{
   --paper:#F5F8F7; --panel:#FFFFFF; --ink:#0F1C20; --muted:#55676C; --line:#D6DFDE;
   --clear:#1C6F75; --clear-soft:#DCEDEC; --signal:#B8661A; --signal-soft:#FAEBDA; --deep:#0E2A2E; --on-deep:#E6F0EF; --on-deep-muted:#9DB6B7;
+  --band1:#D0674F; --band2:#D9A441; --band3:#4FB0B4; --band4:#62BE8C;
+  --shadow:rgba(15,40,45,.22);
   --display:"Libre Caslon Display","Iowan Old Style","Palatino Linotype",Georgia,serif;
   --body:"Hanken Grotesk","Segoe UI",system-ui,-apple-system,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --paper:#0B1517; --panel:#111F22; --ink:#E6EEED; --muted:#97AAAC; --line:#22363A;
-  --clear:#62C3C8; --clear-soft:#123033; --signal:#F0A458; --signal-soft:#3A2813; --deep:#071012; --on-deep:#E6F0EF; --on-deep-muted:#8FA9AA; color-scheme:dark}}
+  --clear:#62C3C8; --clear-soft:#123033; --signal:#F0A458; --signal-soft:#3A2813; --deep:#071012; --on-deep:#E6F0EF; --on-deep-muted:#8FA9AA;
+  --shadow:rgba(0,0,0,.55); color-scheme:dark}}
 :root[data-theme="dark"]{
   --paper:#0B1517; --panel:#111F22; --ink:#E6EEED; --muted:#97AAAC; --line:#22363A;
-  --clear:#62C3C8; --clear-soft:#123033; --signal:#F0A458; --signal-soft:#3A2813; --deep:#071012; --on-deep:#E6F0EF; --on-deep-muted:#8FA9AA; color-scheme:dark}
+  --clear:#62C3C8; --clear-soft:#123033; --signal:#F0A458; --signal-soft:#3A2813; --deep:#071012; --on-deep:#E6F0EF; --on-deep-muted:#8FA9AA;
+  --shadow:rgba(0,0,0,.55); color-scheme:dark}
 
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;transition:background .3s,color .3s}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--paper)}
 a{color:var(--clear)}
 :focus-visible{outline:3px solid var(--signal);outline-offset:3px;border-radius:4px}
+[id]{scroll-margin-top:80px}
 .wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 section{padding-block:88px}
 h1,h2,h3{margin:0;text-wrap:balance}
@@ -49,51 +57,89 @@ p{margin:0}
 .eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--clear)}
 .lead{font-size:1.2rem;color:var(--muted);max-width:56ch}
 .muted{color:var(--muted)}
-.stack{display:flex;flex-direction:column;gap:18px}
+.stack{display:flex;flex-direction:column;gap:18px;min-width:0}
 .ai{color:var(--clear)}
+.band-panel{background:var(--panel);border-block:1px solid var(--line)}
 
 /* Header */
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
-.mark{font-family:var(--display);font-size:1.7rem;color:var(--ink);text-decoration:none;line-height:1}
-.nav{display:flex;align-items:center;gap:22px}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:10px;padding-block:12px}
+.mark{font-family:var(--display);font-size:1.7rem;color:var(--ink);text-decoration:none;line-height:1;margin-right:auto}
+.nav{display:none}
 .nav .navlink{color:var(--ink);text-decoration:none;font-weight:500;font-size:.95rem}
 .nav .navlink:hover{color:var(--clear)}
-.nav .navlink{display:none}
-@media (min-width:820px){.nav .navlink{display:inline}}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 1rem/1 var(--body);text-decoration:none;border-radius:999px;padding:15px 24px;border:1px solid transparent;cursor:pointer;transition:transform .15s,background .15s}
+.actions{display:flex;align-items:center;gap:8px}
+.icon-btn{width:42px;height:42px;flex:none;display:inline-grid;place-items:center;border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer;padding:0;transition:transform .15s,border-color .15s}
+.icon-btn:hover{border-color:var(--clear);transform:translateY(-1px)}
+.icon-btn svg{width:20px;height:20px;display:block}
+.i-sun,.i-close{display:none!important}
+:root[data-theme="dark"] .i-sun{display:block!important}
+:root[data-theme="dark"] .i-moon{display:none!important}
+.top.open .i-close{display:block!important}
+.top.open .i-menu{display:none!important}
+@media (max-width:819px){
+  .top.open .nav{display:flex;flex-direction:column;position:absolute;left:0;right:0;top:100%;background:var(--paper);border-bottom:1px solid var(--line);box-shadow:0 24px 40px -24px var(--shadow);padding-top:4px;padding-bottom:14px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .top.open .nav .navlink{padding-block:14px;border-bottom:1px solid var(--line);font-size:1.1rem}
+  .top.open .nav .navlink:last-child{border-bottom:0}
+}
+@media (max-width:370px){.mark{font-size:1.45rem}.top .btn-small{padding:10px 12px}}
+@media (min-width:820px){.nav{display:flex;align-items:center;gap:24px;margin-right:14px}.menu-btn{display:none}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 1rem/1 var(--body);text-decoration:none;border-radius:999px;padding:15px 24px;border:1px solid transparent;cursor:pointer;transition:transform .15s,background .15s,box-shadow .15s}
 .btn:hover{transform:translateY(-1px)}
 .btn-primary{background:var(--ink);color:var(--paper)}
+.btn-primary:hover{box-shadow:0 10px 24px -12px var(--shadow)}
 .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
-.btn-small{padding:10px 16px;font-size:.9rem}
+.btn-small{padding:11px 16px;font-size:.9rem;white-space:nowrap}
 
 /* Hero */
-.hero{padding-block:72px 96px}
-.hero-grid{display:grid;gap:56px;align-items:center}
+.hero{padding-block:64px 88px;position:relative;isolation:isolate;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse 60% 70% at 78% 45%,#000 0%,transparent 72%);mask-image:radial-gradient(ellipse 60% 70% at 78% 45%,#000 0%,transparent 72%);opacity:.7}
+.hero::after{content:"";position:absolute;z-index:-1;width:620px;height:620px;right:-160px;top:-120px;border-radius:50%;background:radial-gradient(circle,var(--clear-soft) 0%,transparent 65%);opacity:.9}
+.hero-grid{display:grid;gap:52px;align-items:center}
 @media (min-width:960px){.hero-grid{grid-template-columns:1.05fr .95fr}}
 .hero-copy{display:flex;flex-direction:column;gap:26px;min-width:0}
 .hero h1 em{font-style:italic;color:var(--clear)}
 .ctas{display:flex;flex-wrap:wrap;gap:12px}
 .fine{font-size:.9rem;color:var(--muted)}
+.tested{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+.tested b{font-weight:500;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:6px 11px}
 
 /* AI answer panel */
-.answer{background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:0 30px 60px -40px rgba(15,40,45,.45);overflow:hidden;min-width:0}
+.answer{background:var(--panel);border:1px solid var(--line);border-radius:20px;box-shadow:0 40px 80px -48px var(--shadow),0 2px 0 var(--line);overflow:hidden;min-width:0}
 .answer-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.who{display:flex;align-items:center;gap:10px}
+.spark{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;background:var(--clear-soft);color:var(--clear)}
+.spark svg{width:16px;height:16px}
 .answer-bar .eyebrow{color:var(--muted)}
 .toggle{display:inline-flex;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:3px}
 .toggle button{font:600 .82rem/1 var(--body);border:0;background:transparent;color:var(--muted);padding:8px 14px;border-radius:999px;cursor:pointer}
 .toggle button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
-.answer-body{padding:22px 20px 20px;display:flex;flex-direction:column;gap:16px}
+.answer-body{padding:22px 20px 18px;display:flex;flex-direction:column;gap:16px}
 .q{align-self:flex-end;background:var(--clear-soft);color:var(--ink);border-radius:16px 16px 4px 16px;padding:12px 16px;max-width:88%;font-size:.98rem}
 .a{font-family:var(--mono);font-size:.86rem;line-height:1.55;color:var(--ink);display:flex;flex-direction:column;gap:10px}
 .a ol{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
 .a li{display:grid;grid-template-columns:22px 1fr;gap:8px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);transition:background .3s,border-color .3s}
+.a li.pop{animation:rise .45s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .a li .n{color:var(--muted)}
 .a li.you{background:var(--signal-soft);border-color:var(--signal)}
 .a li.you strong{color:var(--signal)}
 .missing{font-family:var(--body);font-size:.9rem;padding:10px 12px;border-radius:10px;background:var(--paper);border:1px dashed var(--line);color:var(--muted)}
 .missing strong{color:var(--ink)}
+.read-from{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-family:var(--mono);font-size:.72rem;color:var(--muted);padding-top:12px;border-top:1px solid var(--line)}
+.read-from span{border:1px solid var(--line);border-radius:6px;padding:3px 7px;background:var(--paper)}
 .caption{font-size:.78rem;color:var(--muted);padding:0 20px 16px}
+
+/* Ticker */
+.ticker{overflow:hidden;background:var(--panel);border-block:1px solid var(--line);padding-block:15px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.ticker-track{display:flex;width:max-content;animation:tick 70s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker .group{display:flex}
+.ticker .group span{font-family:var(--mono);font-size:.86rem;color:var(--muted);white-space:nowrap;display:inline-block;padding-left:26px}
+.ticker .group span::after{content:"";display:inline-block;vertical-align:.18em;margin-left:26px;width:6px;height:6px;border-radius:50%;background:var(--clear);opacity:.7}
+.ticker .group span b{color:var(--ink);font-weight:500}
+@keyframes tick{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ticker{-webkit-mask-image:none;mask-image:none}.ticker-track{width:auto}.ticker .group{flex-wrap:wrap;row-gap:8px}.ticker .group span{white-space:normal}.ticker .group[aria-hidden="true"]{display:none}}
 
 /* Shift */
 .flow{margin-top:44px;display:grid;gap:18px;align-items:center}
@@ -101,11 +147,40 @@ p{margin:0}
 .sources{display:flex;flex-wrap:wrap;gap:8px}
 .chip{font-family:var(--mono);font-size:.8rem;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:var(--panel)}
 .arrow{font-family:var(--display);font-size:2rem;color:var(--clear);text-align:center;line-height:1}
-@media (max-width:899px){.arrow{transform:rotate(90deg)}}
-.node{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px}
+@media (max-width:899px){.flow .arrow{transform:rotate(90deg)}}
+.node{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;min-width:0}
 .node .eyebrow{display:block;margin-bottom:6px}
+.node.glow{border-color:var(--clear);box-shadow:0 0 0 4px var(--clear-soft)}
 .split{display:grid;gap:40px}
 @media (min-width:900px){.split{grid-template-columns:1fr 1fr;gap:72px;align-items:start}}
+
+/* Example: same agency, three stories */
+.listings{margin-top:44px;display:grid;gap:14px}
+@media (min-width:860px){.listings{grid-template-columns:repeat(3,1fr)}}
+.listing{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:14px;min-width:0;transition:transform .2s,box-shadow .2s}
+.listing:hover{transform:translateY(-3px);box-shadow:0 22px 40px -30px var(--shadow)}
+.listing .src{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.listing .src strong{font-size:.95rem}
+.status{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;padding:4px 8px;border-radius:999px;white-space:nowrap}
+.status.ok{background:var(--clear-soft);color:var(--clear)}
+.status.bad{background:var(--signal-soft);color:var(--signal)}
+.listing dl{margin:0;display:flex;flex-direction:column;gap:10px}
+.listing dl div{display:grid;grid-template-columns:70px 1fr;gap:10px;align-items:baseline}
+.listing dt{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.listing dd{margin:0;font-size:.95rem;min-width:0}
+.listing mark{background:var(--signal-soft);color:var(--ink);box-shadow:inset 0 -2px 0 var(--signal);padding:0 3px;border-radius:3px}
+.flag{display:block;font-family:var(--mono);font-size:.68rem;color:var(--signal);margin-top:3px}
+.star{color:var(--signal)}
+.down{display:grid;place-items:center;padding-block:10px;color:var(--clear)}
+.down svg{width:28px;height:28px}
+.fixed{background:var(--clear-soft);border:1px solid var(--clear);border-radius:16px;padding:22px;display:grid;gap:14px}
+@media (min-width:860px){.fixed{grid-template-columns:1fr auto;align-items:center;gap:24px}}
+.fixed strong{font-family:var(--display);font-weight:400;font-size:1.6rem;line-height:1.15;display:block;margin-top:4px}
+.fixed .line{font-family:var(--mono);font-size:.86rem;color:var(--ink);margin-top:8px}
+.ticks{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.ticks li{font-size:.85rem;font-weight:500;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:6px 12px 6px 10px;display:inline-flex;align-items:center;gap:6px}
+.ticks li::before{content:"";width:14px;height:14px;border-radius:50%;background:var(--clear) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M4 7.2l2 2 4-4.4' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/14px no-repeat}
+.note{font-size:.8rem;color:var(--muted);margin-top:14px}
 
 /* Findings sheet */
 .sheet{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden}
@@ -116,80 +191,141 @@ p{margin:0}
 .pill.fix{background:var(--signal-soft);color:var(--signal)}
 
 /* Services */
-.services{margin-top:44px;display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.services{margin-top:44px;display:grid;gap:14px}
 @media (min-width:700px){.services{grid-template-columns:repeat(2,1fr)}}
 @media (min-width:1000px){.services{grid-template-columns:repeat(3,1fr)}}
-.svc{background:var(--panel);padding:26px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.svc{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:10px;min-width:0;transition:transform .2s,border-color .2s,box-shadow .2s}
+.svc:hover{transform:translateY(-3px);border-color:var(--clear);box-shadow:0 22px 40px -30px var(--shadow)}
 .svc .muted{font-size:.97rem}
-.svc.free{background:var(--clear-soft)}
-.svc .tag{font-family:var(--mono);font-size:.75rem;color:var(--clear);letter-spacing:.06em;text-transform:uppercase}
+.svc.free{background:var(--clear-soft);border-color:var(--clear)}
+.svc .head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px}
+.ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--clear-soft);color:var(--clear)}
+.svc.free .ico{background:var(--panel)}
+.ico svg{width:22px;height:22px}
+.svc .tag{font-family:var(--mono);font-size:.72rem;color:var(--clear);letter-spacing:.06em;text-transform:uppercase}
 
 /* Check / score */
 .deep{background:var(--deep);color:var(--on-deep)}
 .deep .eyebrow{color:var(--signal)}
 .deep .lead,.deep .muted{color:var(--on-deep-muted)}
 .deep h2{color:var(--on-deep)}
-.score{margin-top:40px;display:grid;gap:28px}
-@media (min-width:900px){.score{grid-template-columns:1fr 1.2fr;gap:64px;align-items:center}}
-.formula{font-family:var(--display);font-size:clamp(2rem,6vw,3.4rem);line-height:1.1}
-.formula span{font-family:var(--mono);font-size:.9rem;display:block;color:var(--on-deep-muted);margin-top:8px;letter-spacing:.04em}
-.bands{display:grid;grid-template-columns:20fr 30fr 25fr 25fr;gap:4px;font-variant-numeric:tabular-nums}
-.band{padding:14px 12px;border-radius:8px;display:flex;flex-direction:column;gap:2px;min-width:0}
-.band b{font-weight:600;font-size:.95rem}
-.band small{font-family:var(--mono);font-size:.72rem;opacity:.85}
-.b1{background:#5A2E24;color:#F6DDD5}.b2{background:#5E4A1E;color:#F5E6C6}.b3{background:#1F4D52;color:#D3EEEF}.b4{background:#2C6A55;color:#D7F2E6}
-.platforms{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
-.platforms .chip{background:transparent;border-color:rgba(230,240,239,.25);color:var(--on-deep)}
+.score{margin-top:44px;display:grid;gap:36px}
+@media (min-width:900px){.score{grid-template-columns:1fr 1.05fr;gap:64px;align-items:center}}
+.formula{font-family:var(--display);font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.1}
+.formula span{font-family:var(--mono);font-size:.82rem;display:block;color:var(--on-deep-muted);margin-top:10px;letter-spacing:.06em}
+.platforms{display:flex;flex-wrap:wrap;gap:8px}
+.platforms .chip{background:transparent;border-color:color-mix(in srgb,var(--on-deep) 25%,transparent);color:var(--on-deep)}
+.gauge{margin:0;background:color-mix(in srgb,var(--on-deep) 5%,transparent);border:1px solid color-mix(in srgb,var(--on-deep) 15%,transparent);border-radius:20px;padding:24px 20px 20px;display:flex;flex-direction:column;gap:18px;min-width:0}
+.gauge svg{width:100%;max-width:440px;height:auto;margin:0 auto;display:block}
+.g-band{fill:none;stroke-width:26}
+.g1{stroke:var(--band1)}.g2{stroke:var(--band2)}.g3{stroke:var(--band3)}.g4{stroke:var(--band4)}
+.g-ticks{fill:none;stroke:var(--on-deep-muted);stroke-width:7;opacity:.4}
+.g-label{fill:var(--on-deep-muted);font:500 11px var(--mono)}
+.g-q{fill:var(--on-deep);font:400 64px var(--display)}
+.g-cap{fill:var(--on-deep-muted);font:500 10.5px var(--mono);letter-spacing:.08em}
+.g-dot{fill:var(--signal)}
+.legend{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:10px 16px;font-variant-numeric:tabular-nums}
+@media (min-width:560px){.legend{grid-template-columns:repeat(4,1fr)}}
+.legend li{display:flex;flex-direction:column;gap:2px;padding-left:14px;position:relative;font-size:.92rem;font-weight:600}
+.legend li::before{content:"";position:absolute;left:0;top:7px;width:8px;height:8px;border-radius:50%}
+.legend li:nth-child(1)::before{background:var(--band1)}.legend li:nth-child(2)::before{background:var(--band2)}.legend li:nth-child(3)::before{background:var(--band3)}.legend li:nth-child(4)::before{background:var(--band4)}
+.legend small{font-family:var(--mono);font-size:.72rem;font-weight:400;color:var(--on-deep-muted)}
 
 /* Steps */
-.steps{margin:44px 0 0;padding:0;list-style:none;display:grid;gap:14px}
-@media (min-width:900px){.steps{grid-template-columns:repeat(5,1fr)}}
-.steps li{border-top:2px solid var(--ink);padding-top:16px;display:flex;flex-direction:column;gap:8px}
+.steps{margin:48px 0 0;padding:0;list-style:none;display:grid;gap:22px}
+@media (min-width:900px){.steps{grid-template-columns:repeat(5,1fr);gap:16px}}
+.steps li{border-top:2px solid var(--ink);padding-top:18px;display:flex;flex-direction:column;gap:8px;position:relative}
+.steps li::before{content:"";position:absolute;top:-7px;left:0;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--ink)}
 .steps li:last-child{border-top-color:var(--clear)}
+.steps li:last-child::before{border-color:var(--clear);background:var(--clear)}
 .when{font-family:var(--mono);font-size:.78rem;color:var(--clear);letter-spacing:.06em;text-transform:uppercase}
 .steps p{color:var(--muted);font-size:.95rem}
 
+/* Who it's for (houses) */
+.who-grid{display:grid;gap:40px;align-items:center}
+@media (min-width:900px){.who-grid{grid-template-columns:1.1fr 1fr;gap:64px}}
+.street{margin:0;min-width:0}
+.street svg{width:100%;height:auto;display:block}
+.h-wall{fill:var(--panel);stroke:var(--ink);stroke-width:2}
+.h-wall.alt{fill:var(--clear-soft)}
+.h-roof{fill:var(--muted);stroke:var(--ink);stroke-width:2;stroke-linejoin:round}
+.h-win{fill:var(--paper);stroke:var(--ink);stroke-width:2}
+.h-bar{fill:none;stroke:var(--ink);stroke-width:1.5}
+.h-door{fill:var(--clear);stroke:var(--ink);stroke-width:2}
+.h-door.amber{fill:var(--signal)}
+.h-door.ink{fill:var(--ink)}
+.h-ground{stroke:var(--ink);stroke-width:2}
+.h-path{fill:var(--line)}
+.h-bush{fill:var(--clear);opacity:.55;stroke:var(--ink);stroke-width:2}
+.board{fill:var(--panel);stroke:var(--ink);stroke-width:2}
+.post{fill:var(--ink)}
+.board-t{fill:var(--signal);font:700 13px var(--body);letter-spacing:.1em}
+.board-s{fill:var(--muted);font:600 8.5px var(--body);letter-spacing:.04em}
+.bubble{fill:var(--panel);stroke:var(--ink);stroke-width:2;stroke-linejoin:round}
+.bubble-t{fill:var(--ink);font:500 14px var(--body)}
+.bubble-i{fill:var(--clear)}
+.link{fill:none;stroke:var(--clear);stroke-width:2;stroke-dasharray:2 8;stroke-linecap:round;animation:flow 1.6s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-20}}
+.checklist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.checklist li{display:flex;gap:12px;align-items:flex-start;font-weight:500}
+.checklist li::before{content:"";flex:none;margin-top:3px;width:20px;height:20px;border-radius:50%;background:var(--clear) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 10.3l2.8 2.8 5.4-6' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/20px no-repeat}
+
 /* Pricing */
 .prices{margin-top:44px;display:grid;gap:16px}
-@media (min-width:860px){.prices{grid-template-columns:repeat(3,1fr)}}
-.price{border:1px solid var(--line);border-radius:16px;padding:26px;background:var(--panel);display:flex;flex-direction:column;gap:12px}
-.price .amount{font-family:var(--display);font-size:2.6rem;line-height:1}
+@media (min-width:860px){.prices{grid-template-columns:repeat(3,1fr);align-items:stretch}}
+.price{border:1px solid var(--line);border-radius:18px;padding:26px;background:var(--panel);display:flex;flex-direction:column;gap:12px;position:relative}
+.price .amount{font-family:var(--display);font-size:2.9rem;line-height:1}
 .price .amount small{font-family:var(--body);font-size:.95rem;color:var(--muted)}
 .price ul{margin:0;padding-left:18px;color:var(--muted);font-size:.95rem;display:flex;flex-direction:column;gap:6px}
-.price.featured{border-color:var(--ink);box-shadow:0 0 0 1px var(--ink) inset}
+.price.featured{border-color:var(--clear);box-shadow:0 0 0 1px var(--clear) inset,0 30px 60px -40px var(--shadow)}
+.price .ribbon{position:absolute;top:-12px;right:20px;font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;background:var(--clear);color:var(--paper);padding:5px 10px;border-radius:999px}
+.per-day{font-size:.88rem;color:var(--clear);font-weight:600}
 
-/* Promise + name */
+/* Promise */
 .promise{font-family:var(--display);font-size:clamp(1.7rem,4.4vw,2.8rem);line-height:1.2;max-width:26ch}
-.name-story{display:grid;gap:32px;align-items:center}
-@media (min-width:900px){.name-story{grid-template-columns:1.1fr 1fr;gap:72px}}
-.bigmark{font-family:var(--display);font-size:clamp(4rem,16vw,9.5rem);line-height:.9;letter-spacing:-.02em}
+
+/* About */
+.about{display:grid;gap:40px;align-items:center}
+@media (min-width:900px){.about{grid-template-columns:1fr 1fr;gap:72px}}
+.bigmark{font-family:var(--display);font-size:clamp(4rem,15vw,8.6rem);line-height:.9;letter-spacing:-.02em}
 .bigmark .ai{color:var(--clear);border-bottom:4px solid var(--signal)}
+.founder{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:26px;display:flex;flex-direction:column;gap:20px;min-width:0;box-shadow:0 30px 60px -44px var(--shadow)}
+.founder-head{display:flex;align-items:center;gap:14px}
+.avatar{width:64px;height:64px;flex:none;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-size:1.6rem;color:var(--on-deep);background:radial-gradient(circle at 30% 25%,var(--clear),var(--deep) 75%);box-shadow:0 0 0 4px var(--clear-soft)}
+.founder-head strong{display:block;font-size:1.1rem}
+.founder-head span{font-family:var(--mono);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.founder blockquote{margin:0;font-family:var(--display);font-size:1.55rem;line-height:1.3}
+.values{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.values li{padding-block:12px;border-bottom:1px solid var(--line);color:var(--muted);font-size:.97rem}
+.values li:last-child{border-bottom:0;padding-bottom:0}
+.values b{color:var(--ink);font-weight:600}
 
 /* FAQ */
 .faq{margin-top:36px;border-top:1px solid var(--line)}
 details{border-bottom:1px solid var(--line)}
 summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;padding:20px 0;font-weight:600;font-size:1.05rem}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"+";font-family:var(--display);font-size:1.6rem;line-height:1;color:var(--clear)}
-details[open] summary::after{content:"–"}
+summary::after{content:"+";font-family:var(--display);font-size:1.6rem;line-height:1;color:var(--clear);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
 details p{padding:0 0 22px;color:var(--muted);max-width:66ch}
 
 /* Contact */
-.contact{background:var(--deep);color:var(--on-deep)}
+.contact{background:var(--deep);color:var(--on-deep);position:relative;overflow:hidden;isolation:isolate}
+.contact::before{content:"";position:absolute;z-index:-1;width:560px;height:560px;left:-180px;bottom:-260px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--clear) 35%,transparent),transparent 65%)}
 .contact .eyebrow{color:var(--signal)}
 .contact h2{color:var(--on-deep)}
 .contact .lead{color:var(--on-deep-muted)}
-.contact-card{background:rgba(255,255,255,.05);border:1px solid rgba(230,240,239,.18);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:20px;min-width:0}
+.contact-card{background:color-mix(in srgb,var(--on-deep) 6%,transparent);border:1px solid color-mix(in srgb,var(--on-deep) 18%,transparent);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:20px;min-width:0}
 .contact-card dl{margin:0;display:grid;gap:6px 18px}
 .contact-card dt{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--signal);margin-top:10px}
 .contact-card dd{margin:0;font-size:1.15rem;overflow-wrap:anywhere}
 .contact-card dd a{color:var(--on-deep)}
 .phone-line{display:flex;align-items:center;flex-wrap:wrap;gap:10px}
-.copy{font:500 .8rem/1 var(--body);background:transparent;color:var(--on-deep);border:1px solid rgba(230,240,239,.3);border-radius:999px;padding:7px 12px;cursor:pointer}
+.copy{font:500 .8rem/1 var(--body);background:transparent;color:var(--on-deep);border:1px solid color-mix(in srgb,var(--on-deep) 30%,transparent);border-radius:999px;padding:7px 12px;cursor:pointer}
 .btn-signal{background:var(--signal);color:#1B1206}
-footer{background:var(--deep);color:var(--on-deep-muted);border-top:1px solid rgba(230,240,239,.12);font-size:.88rem}
-footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
-footer .mark{font-size:1.2rem;color:var(--on-deep)}
+footer{background:var(--deep);color:var(--on-deep-muted);border-top:1px solid color-mix(in srgb,var(--on-deep) 12%,transparent);font-size:.88rem}
+footer .wrap{padding-block:26px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px}
+footer .mark{font-size:1.2rem;color:var(--on-deep);margin-right:0}
 footer a{color:var(--on-deep)}
 .privacy{padding-block:48px}
 .privacy ul{margin:0 0 22px;padding-left:20px;color:var(--muted);max-width:70ch;display:flex;flex-direction:column;gap:8px}
@@ -215,16 +351,27 @@ footer a{color:var(--on-deep)}
 }
 </script>
 
-<header class="top">
+<header class="top" id="topbar">
   <div class="wrap">
     <a class="mark" href="#top" aria-label="Clairson home">Cl<span class="ai">ai</span>rson</a>
-    <nav class="nav" aria-label="Main">
+    <nav class="nav" id="nav" aria-label="Main">
       <a class="navlink" href="#how">How it works</a>
       <a class="navlink" href="#services">Services</a>
       <a class="navlink" href="#pricing">Pricing</a>
+      <a class="navlink" href="#about">About</a>
       <a class="navlink" href="#faq">FAQ</a>
-      <a class="btn btn-primary btn-small" href="#contact">Free check</a>
     </nav>
+    <div class="actions">
+      <button type="button" class="icon-btn" id="theme-btn" aria-label="Switch to dark mode" title="Day or night">
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
+      </button>
+      <a class="btn btn-primary btn-small" href="#contact">Free check</a>
+      <button type="button" class="icon-btn menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
+        <svg class="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -238,14 +385,15 @@ footer a{color:var(--on-deep)}
         <p class="lead">Landlords and tenants now ask ChatGPT, Google, Copilot and Perplexity which agent to trust. Clairson makes sure your agency is in the answer, and that what AI says about you is right.</p>
         <div class="ctas">
           <a class="btn btn-primary" href="#contact">Get your free AI visibility check</a>
-          <a class="btn btn-ghost" href="#how">How it works</a>
+          <a class="btn btn-ghost" href="#example">See what we fix</a>
         </div>
+        <div class="tested"><span>We test on</span><b>ChatGPT</b><b>Google AI</b><b>Copilot</b><b>Perplexity</b></div>
         <p class="fine">Free check · No obligation · UK-wide, based in Milton Keynes</p>
       </div>
 
       <div class="answer" aria-label="Illustration of an AI assistant's answer">
         <div class="answer-bar">
-          <span class="eyebrow">AI assistant</span>
+          <span class="who"><span class="spark" aria-hidden="true"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l1.8 6.2L16 8l-6.2 1.8L8 16l-1.8-6.2L0 8l6.2-1.8z"/></svg></span><span class="eyebrow">AI assistant</span></span>
           <div class="toggle" role="group" aria-label="Show before or after">
             <button type="button" id="t-before" aria-pressed="true">Before</button>
             <button type="button" id="t-after" aria-pressed="false">After</button>
@@ -258,13 +406,35 @@ footer a{color:var(--on-deep)}
             <ol id="answer-list"></ol>
             <div class="missing" id="missing"><strong>Your agency:</strong> not mentioned, even with great Google reviews.</div>
           </div>
+          <div class="read-from" aria-label="Sources the assistant read"><span>Google</span><span>GetAgent</span><span>Zoopla</span><span>Rightmove</span><span>Agency websites</span></div>
         </div>
         <p class="caption">Illustration only. Real answers vary, and no one can guarantee a position.</p>
       </div>
     </div>
   </section>
 
-  <section id="shift" style="padding-top:24px">
+  <div class="ticker" aria-label="Questions people ask AI about agents">
+    <div class="ticker-track">
+      <div class="group">
+        <span>Who's the best letting agent in <b>Milton Keynes</b>?</span>
+        <span>Which agent should I use to rent out my flat in <b>Coventry</b>?</span>
+        <span>Top-rated estate agents in <b>Leicester</b>?</span>
+        <span>Best property management company in <b>Bristol</b> for landlords?</span>
+        <span>I'm renting in <b>Leeds</b>. Which agents should I contact?</span>
+        <span>Who should I sell my house with in <b>Manchester</b>?</span>
+      </div>
+      <div class="group" aria-hidden="true">
+        <span>Who's the best letting agent in <b>Milton Keynes</b>?</span>
+        <span>Which agent should I use to rent out my flat in <b>Coventry</b>?</span>
+        <span>Top-rated estate agents in <b>Leicester</b>?</span>
+        <span>Best property management company in <b>Bristol</b> for landlords?</span>
+        <span>I'm renting in <b>Leeds</b>. Which agents should I contact?</span>
+        <span>Who should I sell my house with in <b>Manchester</b>?</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="shift">
     <div class="wrap">
       <div class="split">
         <div class="stack">
@@ -284,19 +454,78 @@ footer a{color:var(--on-deep)}
           </div>
         </div>
         <div class="arrow" aria-hidden="true">→</div>
-        <div class="node"><span class="eyebrow">AI assistant</span><strong>Weighs which sources agree</strong></div>
+        <div class="node glow"><span class="eyebrow">AI assistant</span><strong>Weighs which sources agree</strong></div>
         <div class="arrow" aria-hidden="true">→</div>
         <div class="node"><span class="eyebrow">The answer</span><strong>Three to five names. Is yours one?</strong></div>
       </div>
     </div>
   </section>
 
-  <section id="findings" style="background:var(--panel);border-block:1px solid var(--line)">
+  <section id="example" class="band-panel">
+    <div class="wrap">
+      <div class="split">
+        <div class="stack">
+          <span class="eyebrow">An example</span>
+          <h2>Same agency. Three different stories.</h2>
+        </div>
+        <div class="stack">
+          <p class="lead">This is what AI often finds when it reads about a good local agency. Three listings, three versions of the truth.</p>
+          <p class="muted">Highlighted details are the ones that confuse AI. Each one is a quick fix once someone spots it.</p>
+        </div>
+      </div>
+
+      <div class="listings">
+        <article class="listing">
+          <div class="src"><strong>Google profile</strong><span class="status ok">Claimed</span></div>
+          <dl>
+            <div><dt>Name</dt><dd>Your Agency Sales &amp; Lettings</dd></div>
+            <div><dt>Address</dt><dd>12 High Street</dd></div>
+            <div><dt>Phone</dt><dd>01632 960 123</dd></div>
+            <div><dt>Rating</dt><dd><span class="star">★</span> 4.8 · 210 reviews</dd></div>
+          </dl>
+        </article>
+        <article class="listing">
+          <div class="src"><strong>GetAgent listing</strong><span class="status bad">Unclaimed</span></div>
+          <dl>
+            <div><dt>Name</dt><dd><mark>Your Agency Ltd</mark><span class="flag">Different name</span></dd></div>
+            <div><dt>Address</dt><dd>12 High Street</dd></div>
+            <div><dt>Phone</dt><dd><mark>Not listed</mark><span class="flag">Missing</span></dd></div>
+            <div><dt>Rating</dt><dd><mark><span class="star">★</span> 2.5 · 2 reviews</mark><span class="flag">Doesn't match Google</span></dd></div>
+          </dl>
+        </article>
+        <article class="listing">
+          <div class="src"><strong>Zoopla listing</strong><span class="status bad">Duplicate</span></div>
+          <dl>
+            <div><dt>Name</dt><dd>Your Agency – <mark>Bletchely</mark><span class="flag">Misspelt</span></dd></div>
+            <div><dt>Address</dt><dd><mark>14 High Street</mark><span class="flag">Wrong number</span></dd></div>
+            <div><dt>Phone</dt><dd>01632 960 123</dd></div>
+            <div><dt>Rating</dt><dd><mark>No reviews</mark><span class="flag">Reputation missing</span></dd></div>
+          </dl>
+        </article>
+      </div>
+
+      <div class="down" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v15M6 13l6 6 6-6"/></svg></div>
+
+      <div class="fixed">
+        <div>
+          <span class="eyebrow">After Clairson</span>
+          <strong>One clear version of you, everywhere.</strong>
+          <p class="line">Your Agency Sales &amp; Lettings · 12 High Street · 01632 960 123</p>
+        </div>
+        <ul class="ticks" aria-label="Consistent on">
+          <li>Google</li><li>GetAgent</li><li>Zoopla</li><li>Rightmove</li><li>Bing</li><li>Your website</li>
+        </ul>
+      </div>
+      <p class="note">Example with made-up details. These are the kinds of problems we find on real listings.</p>
+    </div>
+  </section>
+
+  <section id="findings">
     <div class="wrap split">
       <div class="stack">
         <span class="eyebrow">What we usually find</span>
         <h2>Great agencies, invisible for fixable reasons.</h2>
-        <p class="muted">These come up again and again when we check local agencies. None of them are about how good you are. All of them are fixable.</p>
+        <p class="muted">These come up again and again when we check agencies. None of them are about how good you are. All of them are fixable.</p>
       </div>
       <div class="sheet">
         <div class="row"><h3>Duplicate listings</h3><span class="pill fix">Fixable</span><p>Your reputation split across several pages, some empty, some misspelt.</p></div>
@@ -308,19 +537,37 @@ footer a{color:var(--on-deep)}
     </div>
   </section>
 
-  <section id="services">
+  <section id="services" style="padding-top:0">
     <div class="wrap">
       <div class="stack">
         <span class="eyebrow">What Clairson does</span>
         <h2>Everything AI needs to recommend you.</h2>
       </div>
       <div class="services">
-        <article class="svc free"><span class="tag">Free</span><h3>AI visibility check</h3><p class="muted">We ask the questions your customers ask on four AI assistants and check every listing they read.</p></article>
-        <article class="svc"><span class="tag">Listings</span><h3>One clear version of you</h3><p class="muted">One name, address and phone number everywhere. Duplicates merged, profiles claimed and completed.</p></article>
-        <article class="svc"><span class="tag">Website</span><h3>Local pages AI understands</h3><p class="muted">Area pages, FAQs and structured data, handed to your web provider ready to paste in.</p></article>
-        <article class="svc"><span class="tag">Reviews</span><h3>A steady review routine</h3><p class="muted">QR codes, message templates and reply templates, so real customers review you where it counts.</p></article>
-        <article class="svc"><span class="tag">Monthly</span><h3>Re-test and report</h3><p class="muted">The same check every month, with a one-page report showing what changed and what's next.</p></article>
-        <article class="svc"><span class="tag">No passwords</span><h3>Safe access</h3><p class="muted">You add us as a manager on your profiles. You stay in control of every account.</p></article>
+        <article class="svc free">
+          <div class="head"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21M8 10.5l2 2 3.5-4"/></svg></span><span class="tag">Free</span></div>
+          <h3>AI visibility check</h3><p class="muted">We ask the questions your customers ask on four AI assistants and check every listing they read.</p>
+        </article>
+        <article class="svc">
+          <div class="head"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></span><span class="tag">Listings</span></div>
+          <h3>One clear version of you</h3><p class="muted">One name, address and phone number everywhere. Duplicates merged, profiles claimed and completed.</p>
+        </article>
+        <article class="svc">
+          <div class="head"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 13h6M7 16h4"/></svg></span><span class="tag">Website</span></div>
+          <h3>Local pages AI understands</h3><p class="muted">Area pages, FAQs and structured data, handed to your web provider ready to paste in.</p>
+        </article>
+        <article class="svc">
+          <div class="head"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg></span><span class="tag">Reviews</span></div>
+          <h3>A steady review routine</h3><p class="muted">QR codes, message templates and reply templates, so real customers review you where it counts.</p>
+        </article>
+        <article class="svc">
+          <div class="head"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4v5h-5"/><path d="M12 8v4l3 2"/></svg></span><span class="tag">Monthly</span></div>
+          <h3>Re-test and report</h3><p class="muted">The same check every month, with a one-page report showing what changed and what's next.</p>
+        </article>
+        <article class="svc">
+          <div class="head"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="tag">No passwords</span></div>
+          <h3>Safe access</h3><p class="muted">You add us as a manager on your profiles. You stay in control of every account.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -333,19 +580,34 @@ footer a{color:var(--on-deep)}
         <p class="lead">Six recommendation questions, asked the same way every time, across four AI assistants. Each answer scores up to 3 points.</p>
       </div>
       <div class="score">
-        <div>
+        <div class="stack" style="gap:24px">
           <div class="formula">6 × 4 × 3 = 72<span>QUESTIONS × AI ASSISTANTS × POINTS</span></div>
           <div class="platforms"><span class="chip">ChatGPT</span><span class="chip">Google AI</span><span class="chip">Microsoft Copilot</span><span class="chip">Perplexity</span></div>
+          <p class="muted">3 points for a top-three mention, 2 for positions four to ten, 1 for a passing mention. Your points out of 72 become a percentage. We also check that AI gets your address, phone number and services right.</p>
         </div>
-        <div class="stack">
-          <div class="bands" role="img" aria-label="Score bands: 0 to 20 percent Invisible, 21 to 50 Weak, 51 to 75 Good, 76 to 100 Strong">
-            <div class="band b1"><b>Invisible</b><small>0–20%</small></div>
-            <div class="band b2"><b>Weak</b><small>21–50%</small></div>
-            <div class="band b3"><b>Good</b><small>51–75%</small></div>
-            <div class="band b4"><b>Strong</b><small>76–100%</small></div>
-          </div>
-          <p class="muted">3 points for a top-three mention, 2 for positions four to ten, 1 for a passing mention. We also check that AI gets your address, phone number and services right.</p>
-        </div>
+        <figure class="gauge">
+          <svg viewBox="0 0 320 196" role="img" aria-label="Score dial from 0 to 100 percent: Invisible 0 to 20, Weak 21 to 50, Good 51 to 75, Strong 76 to 100">
+            <path class="g-band g1" d="M40 170 A120 120 0 0 1 280 170" pathLength="100" stroke-dasharray="19.4 200" stroke-dashoffset="0"/>
+            <path class="g-band g2" d="M40 170 A120 120 0 0 1 280 170" pathLength="100" stroke-dasharray="29 200" stroke-dashoffset="-20.5"/>
+            <path class="g-band g3" d="M40 170 A120 120 0 0 1 280 170" pathLength="100" stroke-dasharray="24 200" stroke-dashoffset="-50.5"/>
+            <path class="g-band g4" d="M40 170 A120 120 0 0 1 280 170" pathLength="100" stroke-dasharray="24.5 200" stroke-dashoffset="-75.5"/>
+            <path class="g-ticks" d="M66 170 A94 94 0 0 1 254 170" pathLength="100" stroke-dasharray="0.5 4.5" stroke-dashoffset="0.25"/>
+            <text class="g-label" x="40" y="192" text-anchor="middle">0%</text>
+            <text class="g-label" x="41.9" y="88" text-anchor="middle">20</text>
+            <text class="g-label" x="160" y="21" text-anchor="middle">50</text>
+            <text class="g-label" x="263.2" y="70" text-anchor="middle">75</text>
+            <text class="g-label" x="280" y="192" text-anchor="middle">100%</text>
+            <circle class="g-dot" cx="160" cy="170" r="5"/>
+            <text class="g-q" x="160" y="146" text-anchor="middle">?</text>
+            <text class="g-cap" x="160" y="192" text-anchor="middle">YOUR SCORE</text>
+          </svg>
+          <ul class="legend">
+            <li>Invisible<small>0–20%</small></li>
+            <li>Weak<small>21–50%</small></li>
+            <li>Good<small>51–75%</small></li>
+            <li>Strong<small>76–100%</small></li>
+          </ul>
+        </figure>
       </div>
     </div>
   </section>
@@ -366,7 +628,77 @@ footer a{color:var(--on-deep)}
     </div>
   </section>
 
-  <section id="pricing" style="background:var(--panel);border-block:1px solid var(--line)">
+  <section id="who" class="band-panel">
+    <div class="wrap who-grid">
+      <figure class="street">
+        <svg viewBox="0 0 520 310" role="img" aria-label="Drawing of a row of terraced houses with a To Let board, and a speech bubble asking: Who should I rent with?">
+          <rect class="h-path" x="0" y="290" width="520" height="10"/>
+          <line class="h-ground" x1="0" y1="290" x2="520" y2="290"/>
+          <!-- walls -->
+          <rect class="h-wall" x="40" y="150" width="110" height="140"/>
+          <rect class="h-wall alt" x="150" y="140" width="110" height="150"/>
+          <rect class="h-wall" x="260" y="150" width="110" height="140"/>
+          <rect class="h-wall alt" x="370" y="140" width="110" height="150"/>
+          <!-- chimneys and side roofs -->
+          <rect class="h-roof" x="220" y="88" width="14" height="26"/>
+          <rect class="h-roof" x="386" y="88" width="14" height="26"/>
+          <polygon class="h-roof" points="146,142 170,108 240,108 264,142"/>
+          <polygon class="h-roof" points="366,142 390,108 460,108 484,142"/>
+          <!-- gables -->
+          <polygon class="h-roof" points="34,152 95,98 156,152"/>
+          <polygon class="h-roof" points="254,152 315,98 376,152"/>
+          <circle class="h-win" cx="315" cy="132" r="8"/>
+          <!-- house A -->
+          <rect class="h-win" x="58" y="170" width="28" height="32"/><path class="h-bar" d="M72 170v32M58 186h28"/>
+          <rect class="h-win" x="104" y="170" width="28" height="32"/><path class="h-bar" d="M118 170v32M104 186h28"/>
+          <rect class="h-win" x="54" y="230" width="36" height="36"/><path class="h-bar" d="M66 230v36M78 230v36"/>
+          <path class="h-door" d="M106 290V244a13 13 0 0 1 26 0V290Z"/>
+          <!-- house B -->
+          <rect class="h-win" x="166" y="162" width="30" height="34"/><path class="h-bar" d="M181 162v34M166 179h30"/>
+          <rect class="h-win" x="214" y="162" width="30" height="34"/><path class="h-bar" d="M229 162v34M214 179h30"/>
+          <path class="h-door amber" d="M168 290V248a13 13 0 0 1 26 0V290Z"/>
+          <rect class="h-win" x="212" y="236" width="32" height="34"/><path class="h-bar" d="M228 236v34"/>
+          <!-- house C -->
+          <rect class="h-win" x="278" y="170" width="28" height="32"/><path class="h-bar" d="M292 170v32M278 186h28"/>
+          <rect class="h-win" x="324" y="170" width="28" height="32"/><path class="h-bar" d="M338 170v32M324 186h28"/>
+          <path class="h-door ink" d="M280 290V244a13 13 0 0 1 26 0V290Z"/>
+          <rect class="h-win" x="320" y="230" width="36" height="36"/><path class="h-bar" d="M332 230v36M344 230v36"/>
+          <!-- house D -->
+          <rect class="h-win" x="386" y="162" width="30" height="34"/><path class="h-bar" d="M401 162v34M386 179h30"/>
+          <rect class="h-win" x="434" y="162" width="30" height="34"/><path class="h-bar" d="M449 162v34M434 179h30"/>
+          <rect class="h-win" x="386" y="236" width="32" height="34"/><path class="h-bar" d="M402 236v34"/>
+          <path class="h-door" d="M436 290V248a13 13 0 0 1 26 0V290Z"/>
+          <!-- bush -->
+          <path class="h-bush" d="M2 290c0-16 10-26 22-26s20 8 20 26Z"/>
+          <!-- question to board link -->
+          <path class="link" d="M236 34C340 18 496 40 500 182"/>
+          <!-- to let board -->
+          <rect class="post" x="479" y="226" width="6" height="64"/>
+          <rect class="board" x="440" y="184" width="84" height="46" rx="3"/>
+          <text class="board-t" x="482" y="206" text-anchor="middle">TO LET</text>
+          <text class="board-s" x="482" y="221" text-anchor="middle">YOUR AGENCY</text>
+          <!-- speech bubble -->
+          <path class="bubble" d="M38 14h186a20 20 0 0 1 0 40H70l-14 14v-14H38a20 20 0 0 1 0-40Z"/>
+          <path class="bubble-i" d="M40 27l1.6 5.4 5.4 1.6-5.4 1.6L40 41l-1.6-5.4-5.4-1.6 5.4-1.6z"/>
+          <text class="bubble-t" x="54" y="39">Who should I rent with?</text>
+        </svg>
+      </figure>
+      <div class="stack">
+        <span class="eyebrow">Who it's for</span>
+        <h2>Built for independent letting and estate agents.</h2>
+        <p class="lead">You've built a good name locally. Landlords recommend you and tenants leave great reviews. Clairson makes sure AI tells the same story.</p>
+        <ul class="checklist">
+          <li>Independent letting agents</li>
+          <li>Estate agents, sales and lettings</li>
+          <li>Property management companies</li>
+          <li>Multi-branch agencies, checked branch by branch</li>
+        </ul>
+        <p class="fine">Anywhere in the UK. Remote by default, in person around Milton Keynes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
     <div class="wrap">
       <div class="stack">
         <span class="eyebrow">Pricing</span>
@@ -374,14 +706,14 @@ footer a{color:var(--on-deep)}
       </div>
       <div class="prices">
         <div class="price"><span class="eyebrow">Step 1</span><h3>AI visibility check</h3><div class="amount">£0</div><ul><li>Four AI assistants tested</li><li>Listings reviewed</li><li>Short report with your top fixes</li></ul></div>
-        <div class="price featured"><span class="eyebrow">Step 2</span><h3>Setup</h3><div class="amount">£500 <small>from, one-off</small></div><ul><li>Listings fixed and claimed</li><li>Website pack</li><li>Review routine</li></ul></div>
-        <div class="price"><span class="eyebrow">Step 3</span><h3>Monthly</h3><div class="amount">£250 <small>from, per month</small></div><ul><li>Monthly Clairson Check</li><li>New local content</li><li>Listing monitoring and report</li></ul></div>
+        <div class="price"><span class="eyebrow">Step 2</span><h3>Setup</h3><div class="amount">£500 <small>from, one-off</small></div><ul><li>Listings fixed and claimed</li><li>Website pack</li><li>Review routine</li></ul></div>
+        <div class="price featured"><span class="ribbon">Keeps you visible</span><span class="eyebrow">Step 3</span><h3>Monthly</h3><div class="amount">£199 <small>from, per month</small></div><p class="per-day">Less than £7 a day.</p><ul><li>Monthly Clairson Check</li><li>New local content</li><li>Listing monitoring and report</li></ul></div>
       </div>
       <p class="fine" style="margin-top:18px">Three-month minimum on monthly plans, then rolling with 30 days' notice.</p>
     </div>
   </section>
 
-  <section id="promise">
+  <section id="promise" class="band-panel">
     <div class="wrap stack" style="gap:22px">
       <span class="eyebrow">Our promise</span>
       <p class="promise">We improve and track how AI sees you. No one can guarantee an AI will name you first, and anyone who promises that is guessing.</p>
@@ -389,14 +721,25 @@ footer a{color:var(--on-deep)}
     </div>
   </section>
 
-  <section id="name" style="padding-top:0">
-    <div class="wrap name-story">
-      <div class="bigmark" aria-label="Clairson">Cl<span class="ai">ai</span>rson</div>
-      <div class="stack">
-        <span class="eyebrow">The name</span>
+  <section id="about">
+    <div class="wrap about">
+      <div class="stack" style="gap:24px">
+        <span class="eyebrow">About Clairson</span>
+        <div class="bigmark" aria-label="Clairson">Cl<span class="ai">ai</span>rson</div>
         <p class="lead"><em>Clair</em> is French for clear. Being seen clearly is what we do. Look closer and you'll find the <span class="ai">ai</span> inside.</p>
-        <p class="muted">Clairson was founded in Milton Keynes by Isreal Jackson, MSc Digital Marketing (2026). We work with agencies across the UK, a small number at a time, so you always deal with the person doing the work.</p>
       </div>
+      <figure class="founder">
+        <div class="founder-head">
+          <div class="avatar" aria-hidden="true">IJ</div>
+          <div><strong>Isreal Jackson</strong><span>Founder · Milton Keynes</span></div>
+        </div>
+        <blockquote>“You already have the business. Clairson makes sure AI can see it.”</blockquote>
+        <ul class="values">
+          <li><b>One person, start to finish.</b> You deal with Isreal directly, from the free check to every monthly report.</li>
+          <li><b>A few agencies at a time.</b> So every client gets proper attention.</li>
+          <li><b>Plain English.</b> Every report says what we found, what we fixed and what comes next.</li>
+        </ul>
+      </figure>
     </div>
   </section>
 
@@ -449,7 +792,7 @@ footer a{color:var(--on-deep)}
           <li><strong>Sharing:</strong> we never sell your data. We use Google (Gmail) for email and GitHub to host this website.</li>
           <li><strong>How long:</strong> up to two years after our last contact. If you ask us to stop, we keep only your details on a do-not-contact list so we never contact you again.</li>
           <li><strong>Your rights:</strong> you can ask to see, correct or delete your data, or object to marketing at any time. Email us and we will stop. You can also complain to the Information Commissioner's Office at ico.org.uk.</li>
-          <li><strong>This website:</strong> no cookies and no tracking. Fonts load from Google Fonts, which receives your IP address.</li>
+          <li><strong>This website:</strong> no cookies and no tracking. If you choose day or night mode, your browser remembers that choice on your own device. Fonts load from Google Fonts, which receives your IP address.</li>
           <li><strong>Updated:</strong> 30 October 2026.</li>
         </ul>
       </details>
@@ -459,11 +802,31 @@ footer a{color:var(--on-deep)}
 </main>
 
 <footer>
-  <div class="wrap"><span class="mark">Cl<span class="ai">ai</span>rson</span><span>© 2026 Clairson · AI visibility for letting &amp; estate agents · United Kingdom · <a href="#privacy">Privacy</a></span></div>
+  <div class="wrap"><span class="mark">Cl<span class="ai">ai</span>rson</span><span>© 2026 Clairson · AI visibility for letting &amp; estate agents · United Kingdom · <a href="#privacy">Privacy</a> · <a href="#top">Back to top</a></span></div>
 </footer>
 
 <script>
 (function(){
+  var root=document.documentElement;
+  /* Day / night */
+  var tb=document.getElementById("theme-btn");
+  function label(){var d=root.getAttribute("data-theme")==="dark";tb.setAttribute("aria-label",d?"Switch to day mode":"Switch to night mode");tb.setAttribute("aria-pressed",String(d))}
+  if(!root.getAttribute("data-theme"))root.setAttribute("data-theme","light");
+  label();
+  tb.addEventListener("click",function(){
+    var next=root.getAttribute("data-theme")==="dark"?"light":"dark";
+    root.setAttribute("data-theme",next);
+    try{localStorage.setItem("clairson-theme",next)}catch(e){}
+    label();
+  });
+  /* Mobile menu */
+  var bar=document.getElementById("topbar"),mb=document.getElementById("menu-btn");
+  function setMenu(open){bar.classList.toggle("open",open);mb.setAttribute("aria-expanded",String(open));mb.setAttribute("aria-label",open?"Close menu":"Open menu")}
+  mb.addEventListener("click",function(){setMenu(!bar.classList.contains("open"))});
+  document.querySelectorAll("#nav a").forEach(function(a){a.addEventListener("click",function(){setMenu(false)})});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")setMenu(false)});
+  window.addEventListener("resize",function(){if(window.innerWidth>=820)setMenu(false)});
+  /* Before / after answer */
   var before=[
     {t:"Agency A",d:"strong reviews, consistent listings"},
     {t:"Agency B",d:"well-reviewed on comparison sites"},
@@ -476,10 +839,11 @@ footer a{color:var(--on-deep)}
   ];
   var list=document.getElementById("answer-list"),miss=document.getElementById("missing"),
       bB=document.getElementById("t-before"),bA=document.getElementById("t-after");
-  function render(items,isAfter){
+  function render(items,isAfter,animate){
     list.innerHTML="";
     items.forEach(function(it,i){
-      var li=document.createElement("li");if(it.you)li.className="you";
+      var li=document.createElement("li");if(it.you)li.classList.add("you");
+      if(animate){li.classList.add("pop");li.style.animationDelay=(i*90)+"ms"}
       var n=document.createElement("span");n.className="n";n.textContent=(i+1)+".";
       var b=document.createElement("span");var s=document.createElement("strong");s.textContent=it.t;
       b.appendChild(s);b.appendChild(document.createTextNode(" · "+it.d));
@@ -487,24 +851,23 @@ footer a{color:var(--on-deep)}
     });
     miss.hidden=isAfter;bB.setAttribute("aria-pressed",String(!isAfter));bA.setAttribute("aria-pressed",String(isAfter));
   }
-  bB.addEventListener("click",function(){render(before,false)});
-  bA.addEventListener("click",function(){render(after,true)});
-  render(before,false);
+  bB.addEventListener("click",function(){render(before,false,true)});
+  bA.addEventListener("click",function(){render(after,true,true)});
+  render(before,false,false);
   var towns=["Milton Keynes","Coventry","Leicester","Manchester","Bristol","Leeds"],ti=0,tEls=document.querySelectorAll(".town");
   var still=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if(!still){setInterval(function(){ti=(ti+1)%towns.length;tEls.forEach(function(e){e.textContent=towns[ti]})},2600)}
-  var ce=document.getElementById("copy-email");
-  ce.addEventListener("click",function(){
-    var ok=function(){ce.textContent="Copied";setTimeout(function(){ce.textContent="Copy"},1600)};
-    var sel=function(){var r=document.createRange();r.selectNodeContents(document.getElementById("email"));var s=getSelection();s.removeAllRanges();s.addRange(r);ce.textContent="Selected"};
-    try{navigator.clipboard.writeText("clairson.uk@gmail.com").then(ok,sel)}catch(e){sel()}
-  });
-  var cp=document.getElementById("copy-phone");
-  cp.addEventListener("click",function(){
-    var done=function(){cp.textContent="Copied";setTimeout(function(){cp.textContent="Copy"},1600)};
-    try{navigator.clipboard.writeText("07537 175345").then(done,function(){selectPhone()})}catch(e){selectPhone()}
-    function selectPhone(){var r=document.createRange();r.selectNodeContents(document.getElementById("phone"));var s=getSelection();s.removeAllRanges();s.addRange(r);cp.textContent="Selected"}
-  });
+  /* Copy buttons */
+  function copier(btnId,text,targetId){
+    var btn=document.getElementById(btnId);
+    btn.addEventListener("click",function(){
+      var ok=function(){btn.textContent="Copied";setTimeout(function(){btn.textContent="Copy"},1600)};
+      var sel=function(){var r=document.createRange();r.selectNodeContents(document.getElementById(targetId));var s=getSelection();s.removeAllRanges();s.addRange(r);btn.textContent="Selected"};
+      try{navigator.clipboard.writeText(text).then(ok,sel)}catch(e){sel()}
+    });
+  }
+  copier("copy-email","clairson.uk@gmail.com","email");
+  copier("copy-phone","07537 175345","phone");
 })();
 </script>
 </body>
