@@ -26,10 +26,11 @@ Upsells later: 24/7 tenant enquiry chatbot, automated lead follow-up, AI listing
 
 ## 4. Pricing (starting point, rough)
 - Audit: free
-- Setup & fixes: ~£500 one-off
-- Monthly: from £199 (changed from £250 on 30 Oct 2026; site says "£199 from, per month" and "Less than £7 a day"). Bigger or multi-branch agencies up to ~£500.
-- Three-month minimum on monthly plans, then rolling with 30 days' notice.
-Rough forecast (estimate, not a promise): 5 clients by month 6 ≈ £995–£2,500/mo; 15–20 by end of year 1 ≈ £2,985–£10,000/mo.
+- **Standard:** £500 one-off setup + £199/month ("less than £7 a day"). Listings fixed, local pages/FAQs/structured data, review routine, monthly Clairson Check + report, client dashboard, weekly listing monitoring.
+- **Premium:** £1,200 one-off setup + £399/month ("about £13 a day"). Everything in Standard plus: out-of-hours enquiry assistant on the website, WhatsApp assistant (WhatsApp Business API, small per-conversation cost), website improvements to the CURRENT site (never break the agency's property feed; rebuild only if they ask), monthly "you vs top 3 local rivals", review replies drafted for approval.
+- Decided 30 Oct 2026 (monthly was £250 before). Three-month minimum, then rolling with 30 days' notice. Clients can start on Standard and upgrade.
+- Enquiry assistant only says what the agency approves (fees, areas, hours, FAQs); anything else → takes details and passes the lead to the branch.
+Rough forecast (estimate, not a promise): 5 clients by month 6 ≈ £995–£1,995/mo; 15 by end of year 1 ≈ £2,985–£5,985/mo.
 
 Website notes: day/night toggle (defaults to day on every device, remembers the visitor's choice), mobile menu, founder section without the MSc line. Edit the source, then rebuild index.html and push.
 
