@@ -360,6 +360,41 @@ footer a{color:var(--on-deep)}
 .privacy{padding-block:48px}
 .privacy ul{margin:0 0 22px;padding-left:20px;color:var(--muted);max-width:70ch;display:flex;flex-direction:column;gap:8px}
 .privacy li strong{color:var(--ink)}
+
+/* When you'll see change */
+.expect{margin-top:28px;display:grid;gap:14px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px}
+@media (min-width:760px){.expect{grid-template-columns:auto 1fr 1fr 1fr;align-items:start;gap:28px}}
+.expect h3{font-size:1rem}
+.expect div{display:flex;flex-direction:column;gap:4px;min-width:0}
+.expect b{font-family:var(--mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--clear);font-weight:500}
+.expect span{color:var(--muted);font-size:.93rem}
+
+/* Compare */
+.compare-title{margin-top:48px;font-family:var(--display);font-weight:400;font-size:1.7rem}
+.compare{margin-top:16px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--panel)}
+.compare-row{display:grid;grid-template-columns:1fr 1fr;gap:4px 16px;padding:14px 20px;border-top:1px solid var(--line)}
+.compare-row:first-child{border-top:0}
+.compare-row .k{grid-column:1/-1;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.compare-row .us{font-weight:600;color:var(--ink);min-width:0}
+.compare-row .them{color:var(--muted);min-width:0}
+.compare-head{background:var(--clear-soft)}
+.compare-head .us{color:var(--clear)}
+.compare-head .them{font-weight:600}
+.compare-head .k{display:none}
+@media (min-width:700px){.compare-row{grid-template-columns:1fr 1.2fr 1.2fr;align-items:baseline}.compare-row .k{grid-column:auto}.compare-head .k{display:block}}
+
+/* Free-check form */
+.check-form{display:grid;gap:14px;margin-top:6px;max-width:520px}
+.check-form .two{display:grid;gap:14px}
+@media (min-width:560px){.check-form .two{grid-template-columns:1fr 1fr}}
+.check-form label{display:flex;flex-direction:column;gap:6px;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--signal);min-width:0}
+.check-form input{font:500 1rem var(--body);letter-spacing:0;text-transform:none;color:var(--on-deep);background:color-mix(in srgb,var(--on-deep) 7%,transparent);border:1px solid color-mix(in srgb,var(--on-deep) 25%,transparent);border-radius:10px;padding:12px 14px;width:100%;min-width:0}
+.check-form input::placeholder{color:var(--on-deep-muted)}
+.check-form input:focus{outline:2px solid var(--signal);outline-offset:1px}
+.form-actions{display:flex;flex-wrap:wrap;gap:10px}
+.btn-outline-light{background:transparent;color:var(--on-deep);border-color:color-mix(in srgb,var(--on-deep) 35%,transparent)}
+.form-note{font-size:.82rem;color:var(--on-deep-muted)}
+.form-error{font-size:.9rem;font-weight:600;color:var(--signal)}
 </style>
 </head>
 <body>
@@ -484,7 +519,7 @@ footer a{color:var(--on-deep)}
         <div class="node">
           <span class="eyebrow">What AI reads</span>
           <div class="sources">
-            <span class="chip">Google Business Profile</span><span class="chip">GetAgent</span><span class="chip">Zoopla</span><span class="chip">Rightmove</span><span class="chip">Bing Places</span><span class="chip">Your website</span><span class="chip">Reviews</span>
+            <span class="chip">Google Business Profile</span><span class="chip">GetAgent</span><span class="chip">Zoopla</span><span class="chip">Rightmove</span><span class="chip">Bing Places</span><span class="chip">Your website</span><span class="chip">Reviews</span><span class="chip">Awards</span>
           </div>
         </div>
         <div class="arrow" aria-hidden="true">→</div>
@@ -492,6 +527,7 @@ footer a{color:var(--on-deep)}
         <div class="arrow" aria-hidden="true">→</div>
         <div class="node"><span class="eyebrow">The answer</span><strong>Three to five names. Is yours one?</strong></div>
       </div>
+      <p class="fine" style="margin-top:20px">Independent research in August 2026 found that AI answers about UK estate agents leaned on review sites, comparison sites such as GetAgent, portal rankings and awards. <a href="https://whito.co.uk/research/ai-estate-agent-recommendations/" target="_blank" rel="noopener">Read the study</a></p>
     </div>
   </section>
 
@@ -584,7 +620,7 @@ footer a{color:var(--on-deep)}
         </article>
         <article class="svc">
           <div class="head"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></span><span class="tag">Listings</span></div>
-          <h3>One clear version of you</h3><p class="muted">One name, address and phone number everywhere. Duplicates merged, profiles claimed and completed.</p>
+          <h3>One clear version of you</h3><p class="muted">One name, address and phone number everywhere. Duplicates merged, profiles claimed and completed, with your Propertymark, redress scheme and client money protection details clear.</p>
         </article>
         <article class="svc">
           <div class="head"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 13h6M7 16h4"/></svg></span><span class="tag">Website</span></div>
@@ -592,7 +628,7 @@ footer a{color:var(--on-deep)}
         </article>
         <article class="svc">
           <div class="head"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg></span><span class="tag">Reviews</span></div>
-          <h3>A steady review routine</h3><p class="muted">QR codes, message templates and reply templates, so real customers review you where it counts.</p>
+          <h3>A steady review routine</h3><p class="muted">QR codes, message templates and reply templates, so real customers review you where it counts. Plus help entering local and industry awards.</p>
         </article>
         <article class="svc">
           <div class="head"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4v5h-5"/><path d="M12 8v4l3 2"/></svg></span><span class="tag">Monthly</span></div>
@@ -659,6 +695,12 @@ footer a{color:var(--on-deep)}
         <li><span class="when">Week 4</span><h3>Reviews</h3><p>Your review routine set up for staff, with replies covered.</p></li>
         <li><span class="when">Every month</span><h3>Re-test</h3><p>Same check, new score, one-page report. You see exactly what moved.</p></li>
       </ol>
+      <div class="expect">
+        <h3>When you'll see change</h3>
+        <div><b>Days to weeks</b><span>Listing and directory fixes show up.</span></div>
+        <div><b>Weeks to months</b><span>AI answers start to reflect the fixes.</span></div>
+        <div><b>Every month</b><span>Your re-test shows exactly what moved.</span></div>
+      </div>
     </div>
   </section>
 
@@ -789,6 +831,16 @@ footer a{color:var(--on-deep)}
         </article>
       </div>
       <p class="fine" style="margin-top:18px">You pay nothing until you've seen your free check and agreed a plan. The monthly fee starts in month 2 and runs for at least three months, then month to month with 30 days' notice. You can start on Standard and upgrade to Premium later.</p>
+
+      <h3 class="compare-title">How Clairson compares</h3>
+      <div class="compare" role="table" aria-label="How Clairson compares with a typical AI search agency">
+        <div class="compare-row compare-head" role="row"><span class="k" role="columnheader"></span><span class="us" role="columnheader">Clairson</span><span class="them" role="columnheader">Typical AI search agency</span></div>
+        <div class="compare-row" role="row"><span class="k" role="rowheader">Monthly price</span><span class="us" role="cell">From £199</span><span class="them" role="cell">£800 to £5,000</span></div>
+        <div class="compare-row" role="row"><span class="k" role="rowheader">Who they work with</span><span class="us" role="cell">Letting and estate agents only</span><span class="them" role="cell">Usually many sectors</span></div>
+        <div class="compare-row" role="row"><span class="k" role="rowheader">Your website</span><span class="us" role="cell">Keep your current site and provider</span><span class="them" role="cell">Some ask you to switch</span></div>
+        <div class="compare-row" role="row"><span class="k" role="rowheader">Prices</span><span class="us" role="cell">On this page</span><span class="them" role="cell">Often on request</span></div>
+      </div>
+      <p class="fine" style="margin-top:10px">Typical prices from a <a href="https://proxdigitalagency.co.uk/blogs/how-much-does-geo-cost-in-the-uk/" target="_blank" rel="noopener">2026 UK price guide</a>.</p>
     </div>
   </section>
 
@@ -847,7 +899,20 @@ footer a{color:var(--on-deep)}
       <div class="stack">
         <span class="eyebrow">Free AI visibility check</span>
         <h2>Find out what AI says about your agency.</h2>
-        <p class="lead">Call, message or email with your agency's name. We'll run the check and walk you through the results in person, on a video call or by email.</p>
+        <p class="lead">Tell us your agency and town. We'll run the check and walk you through the results on a 15-minute video call, in person or by email.</p>
+        <form class="check-form" id="check-form" novalidate>
+          <div class="two">
+            <label for="f-agency">Agency name<input id="f-agency" name="agency" type="text" autocomplete="organization" placeholder="e.g. Smith Lettings" required></label>
+            <label for="f-town">Town or city<input id="f-town" name="town" type="text" autocomplete="address-level2" placeholder="e.g. Milton Keynes" required></label>
+          </div>
+          <label for="f-name">Your name<input id="f-name" name="name" type="text" autocomplete="name" placeholder="Optional"></label>
+          <div class="form-actions">
+            <a class="btn btn-signal" id="f-wa" href="https://wa.me/447537175345" target="_blank" rel="noopener">Request on WhatsApp</a>
+            <a class="btn btn-outline-light" id="f-mail" href="mailto:clairson.uk@gmail.com">Request by email</a>
+          </div>
+          <p class="form-error" id="f-error" hidden>Add your agency name and town first.</p>
+          <p class="form-note">This opens WhatsApp or your email app with your request filled in. Nothing is stored on this website.</p>
+        </form>
       </div>
       <div class="contact-card">
         <dl>
@@ -874,7 +939,7 @@ footer a{color:var(--on-deep)}
           <li><strong>Sharing:</strong> we never sell your data. We use Google (Gmail) for email and GitHub to host this website.</li>
           <li><strong>How long:</strong> up to two years after our last contact. If you ask us to stop, we keep only your details on a do-not-contact list so we never contact you again.</li>
           <li><strong>Your rights:</strong> you can ask to see, correct or delete your data, or object to marketing at any time. Email us and we will stop. You can also complain to the Information Commissioner's Office at ico.org.uk.</li>
-          <li><strong>This website:</strong> no cookies and no tracking. If you choose day or night mode, your browser remembers that choice on your own device. Fonts load from Google Fonts, which receives your IP address.</li>
+          <li><strong>This website:</strong> no cookies and no tracking. If you choose day or night mode, your browser remembers that choice on your own device. The free-check form stores nothing; it opens WhatsApp or your email app with your message for you to send. Fonts load from Google Fonts, which receives your IP address.</li>
           <li><strong>Updated:</strong> 30 October 2026.</li>
         </ul>
       </details>
@@ -939,6 +1004,16 @@ footer a{color:var(--on-deep)}
   var towns=["Milton Keynes","Coventry","Leicester","Manchester","Bristol","Leeds"],ti=0,tEls=document.querySelectorAll(".town");
   var still=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if(!still){setInterval(function(){ti=(ti+1)%towns.length;tEls.forEach(function(e){e.textContent=towns[ti]})},2600)}
+  /* Free-check form: builds a WhatsApp or email message, stores nothing */
+  var fA=document.getElementById("f-agency"),fT=document.getElementById("f-town"),fN=document.getElementById("f-name"),
+      fW=document.getElementById("f-wa"),fM=document.getElementById("f-mail"),fE=document.getElementById("f-error");
+  function msg(){var t="Hi Clairson, please run a free AI visibility check for "+fA.value.trim()+" in "+fT.value.trim()+".";if(fN.value.trim())t+=" My name is "+fN.value.trim()+".";return t}
+  function sync(){var m=msg();fW.href="https://wa.me/447537175345?text="+encodeURIComponent(m);fM.href="mailto:clairson.uk@gmail.com?subject="+encodeURIComponent("Free AI visibility check: "+fA.value.trim())+"&body="+encodeURIComponent(m)}
+  function ready(){return fA.value.trim()&&fT.value.trim()}
+  [fA,fT,fN].forEach(function(i){i.addEventListener("input",function(){sync();if(ready())fE.hidden=true})});
+  [fW,fM].forEach(function(a){a.addEventListener("click",function(e){if(!ready()){e.preventDefault();fE.hidden=false;(fA.value.trim()?fT:fA).focus()}})});
+  document.getElementById("check-form").addEventListener("submit",function(e){e.preventDefault();fW.click()});
+  sync();
   /* Copy buttons */
   function copier(btnId,text,targetId){
     var btn=document.getElementById(btnId);
