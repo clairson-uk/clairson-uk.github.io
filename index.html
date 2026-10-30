@@ -361,6 +361,14 @@ footer a{color:var(--on-deep)}
 .privacy ul{margin:0 0 22px;padding-left:20px;color:var(--muted);max-width:70ch;display:flex;flex-direction:column;gap:8px}
 .privacy li strong{color:var(--ink)}
 
+/* Founding offer */
+.founding{margin-top:16px;display:grid;gap:18px;align-items:center;border:1px dashed var(--signal);background:var(--signal-soft);border-radius:18px;padding:22px 24px}
+@media (min-width:760px){.founding{grid-template-columns:1fr auto;gap:32px}}
+.founding .eyebrow{color:var(--signal)}
+.founding h3{font-family:var(--display);font-weight:400;font-size:clamp(1.3rem,3.4vw,1.6rem);line-height:1.2;margin-top:6px}
+.founding .muted{margin-top:6px;font-size:.95rem;max-width:62ch}
+.founding .btn{justify-self:start}
+
 /* When you'll see change */
 .expect{margin-top:28px;display:grid;gap:14px;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px}
 @media (min-width:760px){.expect{grid-template-columns:auto 1fr 1fr 1fr;align-items:start;gap:28px}}
@@ -457,7 +465,7 @@ footer a{color:var(--on-deep)}
           <a class="btn btn-ghost" href="#example">See what we fix</a>
         </div>
         <div class="tested"><span>We test on</span><b>ChatGPT</b><b>Google AI</b><b>Copilot</b><b>Perplexity</b></div>
-        <p class="fine">Free check · No obligation · UK-wide, based in Milton Keynes</p>
+        <p class="fine">Free check · No obligation · UK-wide, based in Milton Keynes · <a href="#founding">3 founding client places</a></p>
       </div>
 
       <div class="answer" aria-label="Illustration of an AI assistant's answer">
@@ -793,6 +801,15 @@ footer a{color:var(--on-deep)}
         <div class="free-price"><span class="amount">£0</span><a class="btn btn-primary btn-small" href="#contact">Book your check</a></div>
       </div>
 
+      <div class="founding" id="founding">
+        <div>
+          <span class="eyebrow">Founding client offer · 3 places</span>
+          <h3>Standard for £350 setup, then £149 a month for your first 3 months.</h3>
+          <p class="muted">For our first three agencies, in return for honest feedback we can publish and permission to share your before-and-after score. After that it's the normal £199 a month, with 30 days' notice to stop.</p>
+        </div>
+        <a class="btn btn-primary" href="https://wa.me/447537175345?text=Hi%20Clairson%2C%20I%27d%20like%20one%20of%20the%20founding%20client%20places%20for%20my%20agency." target="_blank" rel="noopener">Claim a founding place</a>
+      </div>
+
       <div class="tiers">
         <article class="tier" aria-labelledby="tier-standard">
           <div class="tier-head"><span class="eyebrow">Standard</span><span class="badge">Best place to start</span></div>
@@ -949,7 +966,7 @@ footer a{color:var(--on-deep)}
 </main>
 
 <footer>
-  <div class="wrap"><span class="mark">Cl<span class="ai">ai</span>rson</span><span>© 2026 Clairson · AI visibility for letting &amp; estate agents · United Kingdom · <a href="#privacy">Privacy</a> · <a href="#top">Back to top</a></span></div>
+  <div class="wrap"><span class="mark">Cl<span class="ai">ai</span>rson</span><span>Areas: <a href="https://clairson-uk.github.io/milton-keynes/">Milton Keynes</a> · <a href="https://clairson-uk.github.io/coventry/">Coventry</a> · <a href="https://clairson-uk.github.io/leicester/">Leicester</a></span><span>© 2026 Clairson · AI visibility for letting &amp; estate agents · United Kingdom · <a href="#privacy">Privacy</a> · <a href="#top">Back to top</a></span></div>
 </footer>
 
 <script>

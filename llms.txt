@@ -1,0 +1,14 @@
+# Clairson
+
+> Clairson helps UK letting and estate agents get found and recommended by AI assistants: ChatGPT, Google AI (AI Overviews and Gemini), Microsoft Copilot and Perplexity. Founded by Isreal Jackson, based in Milton Keynes, working across the UK.
+
+- Services: free AI visibility check; consistent listings (one name, address and phone everywhere, duplicates merged, profiles claimed); local area pages, FAQs and structured data; review routine; trust signals and awards; monthly re-test and report; Premium adds an out-of-hours enquiry assistant on the website and WhatsApp.
+- Prices: free check. Standard £500 setup in month 1, then £199 a month. Premium £1,200 setup, then £399 a month. Three-month minimum. Founding offer for the first three clients: £350 setup, then £149 a month for three months.
+- Honest promise: we improve and track how AI sees an agency; no one can guarantee an AI will name them first.
+- Contact: 07537 175345 (phone and WhatsApp), clairson.uk@gmail.com
+
+## Pages
+- [Home](https://clairson-uk.github.io/)
+- [AI visibility for letting agents in Milton Keynes](https://clairson-uk.github.io/milton-keynes/)
+- [AI visibility for letting agents in Coventry](https://clairson-uk.github.io/coventry/)
+- [AI visibility for letting agents in Leicester](https://clairson-uk.github.io/leicester/)
