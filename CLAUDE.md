@@ -3,7 +3,7 @@
 Read this first in every session. It is the business brain for this repo.
 
 ## 1. Who and what
-- **Business name:** Clairson ("Be seen clearly by AI"). Cl-ai-rson: *clair* = clear, with "ai" hidden inside. Checked 30 Oct 2026: no Companies House match; only UK trade mark for CLAIRSON is dead (1984, class 20). Always call the business "Clairson". Isreal Jackson is the founder and signs emails. Website: clairson-uk.github.io (planned). Email: clairson.uk@gmail.com.
+- **Business name:** Clairson ("Be seen clearly by AI"). Cl-ai-rson: *clair* = clear, with "ai" hidden inside. Checked 30 Oct 2026: no Companies House match; only UK trade mark for CLAIRSON is dead (1984, class 20). Always call the business "Clairson". Isreal Jackson is the founder and signs emails. Website: https://clairson-uk.github.io (live since 30 Oct 2026). Email: clairson.uk@gmail.com.
 - **Owner:** Isreal Jackson, Milton Keynes, UK. MSc Digital Marketing (2026): SEO, data analysis, trends, competition. Doesn't drive, so local work must be walkable or reachable by bus.
 - **Business:** helps **letting and estate agencies** get found and recommended by AI tools (ChatGPT, Google AI Overviews/Gemini, Microsoft Copilot, Perplexity). Wider goal: fill any AI gap agencies have (chatbots, lead follow-up, AI listings, CRM automation).
 - **Why agencies:** already-established businesses with marketing budgets; each landlord/tenant is worth a lot; owners lack time/know-how. Pitch: "You already have the business. I give you the one thing you're missing."
