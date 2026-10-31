@@ -12,3 +12,6 @@
 - [AI visibility for letting agents in Milton Keynes](https://clairson-uk.github.io/milton-keynes/)
 - [AI visibility for letting agents in Coventry](https://clairson-uk.github.io/coventry/)
 - [AI visibility for letting agents in Leicester](https://clairson-uk.github.io/leicester/)
+
+## Research
+- [Which letting agents does AI recommend in Milton Keynes? (31 Oct 2026)](https://clairson-uk.github.io/research/milton-keynes-ai-recommendations/): ChatGPT, Google AI Mode, Copilot Search and Perplexity named 38 different agencies across 12 answers; only Prestige Estates MK, Lion Estates and Alexander Lawrence were named by all four.
