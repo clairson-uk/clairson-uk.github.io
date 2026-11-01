@@ -271,18 +271,14 @@ p{margin:0}
 .checklist li::before{content:"";flex:none;margin-top:3px;width:20px;height:20px;border-radius:50%;background:var(--clear) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 10.3l2.8 2.8 5.4-6' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/20px no-repeat}
 
 /* Pricing */
-.free-bar{margin-top:44px;display:grid;gap:18px;align-items:center;background:var(--clear-soft);border:1px solid var(--clear);border-radius:18px;padding:22px 24px}
-@media (min-width:760px){.free-bar{grid-template-columns:1fr auto;gap:32px}}
-.free-bar h3{margin-top:6px;font-size:1.25rem}
-.free-bar .muted{margin-top:4px;font-size:.97rem}
-.free-price{display:flex;align-items:center;gap:16px}
-.free-price .amount{font-family:var(--display);font-size:2.6rem;line-height:1}
+.split + .founding{margin-top:44px}
 .tiers{margin-top:16px;display:grid;gap:16px}
 @media (min-width:860px){.tiers{grid-template-columns:1fr 1fr;align-items:stretch}}
 .tier{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:18px;min-width:0}
 .tier-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
 .badge{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:var(--clear-soft);color:var(--clear);white-space:nowrap}
-.tier h3{font-family:var(--display);font-weight:400;font-size:clamp(1.7rem,4vw,2.1rem);line-height:1.1}
+.tier h3{font-family:var(--display);font-weight:400;font-size:clamp(1.3rem,3vw,1.55rem);line-height:1.25;max-width:26ch}
+.tier-name{font-family:var(--display);font-size:clamp(1.9rem,4.6vw,2.4rem);line-height:1}
 .pay{display:grid;grid-template-columns:1fr 1fr;gap:12px;position:relative;font-variant-numeric:tabular-nums}
 .pay-step{border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0;background:var(--paper)}
 .pay-when{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
@@ -302,7 +298,11 @@ p{margin:0}
 .incl li{display:flex;gap:12px;align-items:flex-start;font-size:.97rem;color:var(--muted)}
 .incl li b{color:var(--ink);font-weight:600}
 .incl li::before{content:"";flex:none;margin-top:3px;width:18px;height:18px;border-radius:50%;background:var(--clear) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 10.3l2.8 2.8 5.4-6' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/18px no-repeat}
-.tier .btn{align-self:flex-start}
+.tier .btn{align-self:stretch;white-space:normal;text-align:center;line-height:1.3}
+.incl li.extra::before{background:var(--signal) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 5.5v9M5.5 10h9' fill='none' stroke='%231B1206' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E") center/18px no-repeat}
+.xtra{display:inline-block;margin-left:6px;vertical-align:1px;font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:999px;background:color-mix(in srgb,var(--signal) 22%,transparent);color:var(--signal);white-space:nowrap}
+.incl li.base b{color:var(--ink)}
+.tier-note{font-size:.86rem;color:var(--muted);margin-top:-6px}
 .tier.premium{background:var(--deep);color:var(--on-deep);border-color:color-mix(in srgb,var(--signal) 55%,transparent);position:relative;overflow:hidden;isolation:isolate;box-shadow:0 40px 80px -50px var(--shadow)}
 .tier.premium::before{content:"";position:absolute;z-index:-1;width:460px;height:460px;right:-170px;top:-190px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--clear) 38%,transparent),transparent 65%)}
 .tier.premium .eyebrow{color:var(--signal)}
@@ -481,7 +481,7 @@ footer a{color:var(--on-deep)}
     "name": "What does it cost?",
     "acceptedAnswer": {
      "@type": "Answer",
-     "text": "The check is free. Standard is £500 setup in month 1, then £199 a month. Premium is £1,200, then £399 a month. Our first three clients get a founding price of £350 setup, then £149 a month for the first three months."
+     "text": "The check is free. Standard is £500 setup in month 1, then £199 a month. Premium is £1,200 setup, then £349 a month. Our first three clients get the Standard setup for £345, then £199 a month."
     }
    }
   ]
@@ -581,9 +581,9 @@ footer a{color:var(--on-deep)}
         <h2>Start free. Then choose your plan.</h2>
       </div>
       <div class="mini-plans">
-        <div class="mini"><span class="eyebrow">Standard</span><div class="amount">£199<small>a month</small></div><p>£500 setup in month 1. Listings fixed, local pages, reviews, monthly check and your own dashboard.</p></div>
-        <div class="mini"><span class="eyebrow">Premium</span><div class="amount">£399<small>a month</small></div><p>£1,200 setup in month 1. Everything in Standard, plus an out-of-hours enquiry assistant on your website and WhatsApp.</p></div>
-        <div class="mini found"><span class="eyebrow">Founding offer · 3 places</span><div class="amount">£149<small>a month</small></div><p>£350 setup, then £149 a month for your first 3 months, in return for honest feedback we can publish.</p></div>
+        <div class="mini"><span class="eyebrow">Standard</span><div class="amount">£199<small>a month</small></div><p>£500 setup in month 1. Full AI audit, Google, Bing and Apple profiles, directory clean-up, website FAQs and structured data, review requests and a monthly report.</p></div>
+        <div class="mini"><span class="eyebrow">Premium</span><div class="amount">£349<small>a month</small></div><p>£1,200 setup in month 1. Everything in Standard, plus local PR and property stories, competitor tracking, fortnightly reports and a monthly strategy call.</p></div>
+        <div class="mini found"><span class="eyebrow">Founding offer · 3 places</span><div class="amount">£345<small>setup</small></div><p>Our first 3 clients get the Standard setup for £345, then £199 a month. Limited spaces.</p></div>
       </div>
       <p class="fine" style="margin-top:16px"><a href="/#pricing">Full plan details</a>. No one can guarantee an AI will name you first; we improve and track how AI sees you.</p>
     </div>
@@ -625,7 +625,7 @@ footer a{color:var(--on-deep)}
         <span class="eyebrow">Questions</span>
         <h2>Straight answers.</h2>
       </div>
-      <div class="faq"><details><summary>Do you work with agencies in Coventry?</summary><p>Yes. The whole service works remotely, so Coventry agencies get the same check, fixes and monthly report as anywhere else in the UK.</p></details><details><summary>Can we meet in person?</summary><p>We walk you through your check on a 15-minute video call. It&#x27;s quick for a busy branch, and you can share the screen with colleagues.</p></details><details><summary>Which AI tools do you test?</summary><p>ChatGPT, Google AI (AI Overviews and Gemini), Microsoft Copilot and Perplexity, with the same questions every month so the scores can be compared.</p></details><details><summary>What does it cost?</summary><p>The check is free. Standard is £500 setup in month 1, then £199 a month. Premium is £1,200, then £399 a month. Our first three clients get a founding price of £350 setup, then £149 a month for the first three months.</p></details></div>
+      <div class="faq"><details><summary>Do you work with agencies in Coventry?</summary><p>Yes. The whole service works remotely, so Coventry agencies get the same check, fixes and monthly report as anywhere else in the UK.</p></details><details><summary>Can we meet in person?</summary><p>We walk you through your check on a 15-minute video call. It&#x27;s quick for a busy branch, and you can share the screen with colleagues.</p></details><details><summary>Which AI tools do you test?</summary><p>ChatGPT, Google AI (AI Overviews and Gemini), Microsoft Copilot and Perplexity, with the same questions every month so the scores can be compared.</p></details><details><summary>What does it cost?</summary><p>The check is free. Standard is £500 setup in month 1, then £199 a month. Premium is £1,200 setup, then £349 a month. Our first three clients get the Standard setup for £345, then £199 a month.</p></details></div>
     </div>
   </section>
 </main>

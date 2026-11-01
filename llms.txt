@@ -2,8 +2,9 @@
 
 > Clairson helps UK letting and estate agents get found and recommended by AI assistants: ChatGPT, Google AI (AI Overviews and Gemini), Microsoft Copilot and Perplexity. Founded by Isreal Jackson, based in Milton Keynes, working across the UK.
 
-- Services: free AI visibility check; consistent listings (one name, address and phone everywhere, duplicates merged, profiles claimed); local area pages, FAQs and structured data; review routine; trust signals and awards; monthly re-test and report; Premium adds an out-of-hours enquiry assistant on the website and WhatsApp.
-- Prices: free check. Standard £500 setup in month 1, then £199 a month. Premium £1,200 setup, then £399 a month. Three-month minimum. Founding offer for the first three clients: £350 setup, then £149 a month for three months.
+- Standard plan: full AI visibility audit (ChatGPT, Perplexity, Gemini, Google AI Overviews, Copilot); Google Business Profile, Bing Places and Apple Business Connect set up and optimised; directory clean-up so name, address and phone match everywhere; website FAQs and structured data written for AI; review request system; monthly AI visibility report.
+- Premium plan: everything in Standard, plus local press releases and pitching to local news; data-led local property stories with the agent quoted as the expert; monthly competitor tracking; fortnightly reports and a monthly strategy call; priority support.
+- Prices: free 15-minute AI visibility check. Standard £500 setup in month 1, then £199 a month. Premium £1,200 setup, then £349 a month. Three-month minimum. Founding offer for the first three clients: Standard setup for £345, then £199 a month.
 - Honest promise: we improve and track how AI sees an agency; no one can guarantee an AI will name them first.
 - Contact: 07537 175345 (phone and WhatsApp), clairson.uk@gmail.com
 

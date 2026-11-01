@@ -271,18 +271,14 @@ p{margin:0}
 .checklist li::before{content:"";flex:none;margin-top:3px;width:20px;height:20px;border-radius:50%;background:var(--clear) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 10.3l2.8 2.8 5.4-6' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/20px no-repeat}
 
 /* Pricing */
-.free-bar{margin-top:44px;display:grid;gap:18px;align-items:center;background:var(--clear-soft);border:1px solid var(--clear);border-radius:18px;padding:22px 24px}
-@media (min-width:760px){.free-bar{grid-template-columns:1fr auto;gap:32px}}
-.free-bar h3{margin-top:6px;font-size:1.25rem}
-.free-bar .muted{margin-top:4px;font-size:.97rem}
-.free-price{display:flex;align-items:center;gap:16px}
-.free-price .amount{font-family:var(--display);font-size:2.6rem;line-height:1}
+.split + .founding{margin-top:44px}
 .tiers{margin-top:16px;display:grid;gap:16px}
 @media (min-width:860px){.tiers{grid-template-columns:1fr 1fr;align-items:stretch}}
 .tier{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:18px;min-width:0}
 .tier-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
 .badge{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:var(--clear-soft);color:var(--clear);white-space:nowrap}
-.tier h3{font-family:var(--display);font-weight:400;font-size:clamp(1.7rem,4vw,2.1rem);line-height:1.1}
+.tier h3{font-family:var(--display);font-weight:400;font-size:clamp(1.3rem,3vw,1.55rem);line-height:1.25;max-width:26ch}
+.tier-name{font-family:var(--display);font-size:clamp(1.9rem,4.6vw,2.4rem);line-height:1}
 .pay{display:grid;grid-template-columns:1fr 1fr;gap:12px;position:relative;font-variant-numeric:tabular-nums}
 .pay-step{border:1px solid var(--line);border-radius:14px;padding:14px 14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0;background:var(--paper)}
 .pay-when{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
@@ -302,7 +298,11 @@ p{margin:0}
 .incl li{display:flex;gap:12px;align-items:flex-start;font-size:.97rem;color:var(--muted)}
 .incl li b{color:var(--ink);font-weight:600}
 .incl li::before{content:"";flex:none;margin-top:3px;width:18px;height:18px;border-radius:50%;background:var(--clear) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M6 10.3l2.8 2.8 5.4-6' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/18px no-repeat}
-.tier .btn{align-self:flex-start}
+.tier .btn{align-self:stretch;white-space:normal;text-align:center;line-height:1.3}
+.incl li.extra::before{background:var(--signal) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 5.5v9M5.5 10h9' fill='none' stroke='%231B1206' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E") center/18px no-repeat}
+.xtra{display:inline-block;margin-left:6px;vertical-align:1px;font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:999px;background:color-mix(in srgb,var(--signal) 22%,transparent);color:var(--signal);white-space:nowrap}
+.incl li.base b{color:var(--ink)}
+.tier-note{font-size:.86rem;color:var(--muted);margin-top:-6px}
 .tier.premium{background:var(--deep);color:var(--on-deep);border-color:color-mix(in srgb,var(--signal) 55%,transparent);position:relative;overflow:hidden;isolation:isolate;box-shadow:0 40px 80px -50px var(--shadow)}
 .tier.premium::before{content:"";position:absolute;z-index:-1;width:460px;height:460px;right:-170px;top:-190px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--clear) 38%,transparent),transparent 65%)}
 .tier.premium .eyebrow{color:var(--signal)}
@@ -422,8 +422,8 @@ footer a{color:var(--on-deep)}
   "knowsAbout":["AI search visibility","Local SEO","Structured data","Online reviews","Letting agents"],
   "makesOffer":[
     {"@type":"Offer","name":"Free AI visibility check","price":"0","priceCurrency":"GBP"},
-    {"@type":"Offer","name":"Standard plan","description":"£500 one-off setup in month 1, then £199 a month from month 2: listings fixed, local pages, review routine, monthly AI visibility check and client dashboard.","price":"199","priceCurrency":"GBP"},
-    {"@type":"Offer","name":"Premium plan","description":"£1,200 one-off setup in month 1, then £399 a month from month 2: everything in Standard plus an out-of-hours enquiry assistant on the website and WhatsApp, website improvements and competitor tracking.","price":"399","priceCurrency":"GBP"}
+    {"@type":"Offer","name":"Standard plan","description":"£500 one-off setup in month 1, then £199 a month from month 2: full AI visibility audit (ChatGPT, Perplexity, Gemini, Google AI Overviews, Copilot), Google Business Profile, Bing Places and Apple Business Connect set up and optimised, directory clean-up, website FAQs and structured data, review request system and a monthly AI visibility report.","price":"199","priceCurrency":"GBP"},
+    {"@type":"Offer","name":"Premium plan","description":"£1,200 one-off setup in month 1, then £349 a month from month 2: everything in Standard plus local press releases and pitching to local news, data-led local property stories with the agent quoted as the expert, monthly competitor tracking, fortnightly reports, a monthly strategy call and priority support.","price":"349","priceCurrency":"GBP"}
   ]
 }
 </script>
@@ -640,7 +640,7 @@ footer a{color:var(--on-deep)}
         </article>
         <article class="svc">
           <div class="head"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.7"/><path d="M20 4v5h-5"/><path d="M12 8v4l3 2"/></svg></span><span class="tag">Monthly</span></div>
-          <h3>Re-test and report</h3><p class="muted">The same check every month, on your own dashboard, with a one-page report showing what changed and what's next.</p>
+          <h3>Re-test and report</h3><p class="muted">The same check every month, with a short report showing what changed and what's next.</p>
         </article>
         <article class="svc">
           <div class="head"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="tag">No passwords</span></div>
@@ -787,67 +787,57 @@ footer a{color:var(--on-deep)}
       <div class="split">
         <div class="stack">
           <span class="eyebrow">Pricing</span>
-          <h2>Start free. Then choose your plan.</h2>
+          <h2>Two plans. Both start with a free check.</h2>
         </div>
-        <p class="lead">Every agency starts with the free check. Standard gets AI to see you clearly. Premium also makes sure no enquiry goes unanswered, even at 10pm.</p>
-      </div>
-
-      <div class="free-bar">
-        <div>
-          <span class="eyebrow">Step 1 · Free</span>
-          <h3>AI visibility check</h3>
-          <p class="muted">Four AI assistants tested, your listings reviewed, and a short report with your top fixes. No obligation.</p>
-        </div>
-        <div class="free-price"><span class="amount">£0</span><a class="btn btn-primary btn-small" href="#contact">Book your check</a></div>
+        <p class="lead">Every agency starts with a free 15-minute AI visibility check. Standard gets you found and described accurately. Premium goes further, so AI has more reasons to recommend you first.</p>
       </div>
 
       <div class="founding" id="founding">
         <div>
-          <span class="eyebrow">Founding client offer · 3 places</span>
-          <h3>Standard for £350 setup, then £149 a month for your first 3 months.</h3>
-          <p class="muted">For our first three agencies, in return for honest feedback we can publish and permission to share your before-and-after score. After that it's the normal £199 a month, with 30 days' notice to stop.</p>
+          <span class="eyebrow">Founding client offer · Limited spaces</span>
+          <h3>Our first 3 clients get the Standard setup for £345, then £199/month.</h3>
         </div>
         <a class="btn btn-primary" href="https://wa.me/447537175345?text=Hi%20Clairson%2C%20I%27d%20like%20one%20of%20the%20founding%20client%20places%20for%20my%20agency." target="_blank" rel="noopener">Claim a founding place</a>
       </div>
 
       <div class="tiers">
         <article class="tier" aria-labelledby="tier-standard">
-          <div class="tier-head"><span class="eyebrow">Standard</span><span class="badge">Best place to start</span></div>
-          <h3 id="tier-standard">Be seen clearly by AI</h3>
+          <div class="tier-head"><span class="tier-name" id="tier-standard">Standard</span><span class="badge">Best place to start</span></div>
+          <h3>For agents who want to be found and described accurately in AI search.</h3>
           <div class="pay" aria-label="Month 1: £500 one-off setup. From month 2: £199 a month.">
-            <div class="pay-step"><span class="pay-when">Month 1</span><span class="pay-amt">£500</span><span class="pay-what">One-off setup. We fix everything.</span></div>
+            <div class="pay-step"><span class="pay-when">Month 1</span><span class="pay-amt">£500</span><span class="pay-what">One-off setup.</span></div>
             <div class="pay-step main"><span class="pay-when">Month 2 onwards</span><span class="pay-amt">£199<small>/month</small></span><span class="pay-what">Less than £7 a day.</span></div>
           </div>
           <ul class="incl">
-            <li><span><b>One clear version of you.</b> Listings fixed, duplicates merged, profiles claimed.</span></li>
-            <li><span><b>Local pages AI understands.</b> Area pages, FAQs and structured data for your web provider.</span></li>
-            <li><span><b>A steady review routine.</b> QR codes, message templates and reply templates.</span></li>
-            <li><span><b>Monthly Clairson Check.</b> Same questions, new score, one-page report.</span></li>
-            <li><span><b>Your own dashboard.</b> Your score, fixes and new reviews in one private page.</span></li>
-            <li><span><b>Listings watched every week</b> so nothing drifts back.</span></li>
+            <li><span><b>Full AI visibility audit</b> on ChatGPT, Perplexity, Gemini, Google AI Overviews and Copilot.</span></li>
+            <li><span><b>Google Business Profile, Bing Places and Apple Business Connect</b> set up and optimised.</span></li>
+            <li><span><b>Directory clean-up,</b> so your name, address and phone match everywhere.</span></li>
+            <li><span><b>Website FAQs and structured data</b> written for AI.</span></li>
+            <li><span><b>Review request system</b> for your real customers.</span></li>
+            <li><span><b>Monthly AI visibility report.</b></span></li>
           </ul>
-          <a class="btn btn-primary" href="https://wa.me/447537175345?text=Hi%20Clairson%2C%20I%27m%20interested%20in%20the%20Standard%20plan%20for%20my%20agency.%20Can%20we%20start%20with%20the%20free%20check%3F" target="_blank" rel="noopener">Start with Standard</a>
+          <a class="btn btn-primary" href="https://wa.me/447537175345?text=Hi%20Clairson%2C%20I%27d%20like%20to%20book%20a%20free%2015-minute%20AI%20visibility%20check%20for%20my%20agency.%20I%27m%20interested%20in%20the%20Standard%20plan." target="_blank" rel="noopener">Book a free 15-minute AI visibility check</a>
         </article>
 
         <article class="tier premium" aria-labelledby="tier-premium">
-          <div class="tier-head"><span class="eyebrow">Premium</span><span class="badge">Never miss an enquiry</span></div>
-          <h3 id="tier-premium">Be seen, and answer every enquiry</h3>
-          <div class="pay" aria-label="Month 1: £1,200 one-off setup. From month 2: £399 a month.">
-            <div class="pay-step"><span class="pay-when">Month 1</span><span class="pay-amt">£1,200</span><span class="pay-what">One-off setup, including your assistant.</span></div>
-            <div class="pay-step main"><span class="pay-when">Month 2 onwards</span><span class="pay-amt">£399<small>/month</small></span><span class="pay-what">About £13 a day.</span></div>
+          <div class="tier-head"><span class="tier-name" id="tier-premium">Premium</span><span class="badge">Recommended</span></div>
+          <h3>For agents who want to be the name AI recommends first in their area.</h3>
+          <div class="pay" aria-label="Month 1: £1,200 one-off setup. From month 2: £349 a month.">
+            <div class="pay-step"><span class="pay-when">Month 1</span><span class="pay-amt">£1,200</span><span class="pay-what">One-off setup.</span></div>
+            <div class="pay-step main"><span class="pay-when">Month 2 onwards</span><span class="pay-amt">£349<small>/month</small></span><span class="pay-what">Under £12 a day.</span></div>
           </div>
-          <p class="plus">Everything in Standard, plus:</p>
           <ul class="incl">
-            <li><span><b>Out-of-hours enquiry assistant</b> on your website. It answers landlords and tenants day and night and passes every lead to your branch.</span></li>
-            <li><span><b>WhatsApp assistant</b> for enquiries that arrive by message.</span></li>
-            <li><span><b>Website improvements</b> to your current site. Your property feed stays exactly as it is.</span></li>
-            <li><span><b>You vs your top 3 local rivals,</b> tracked every month.</span></li>
-            <li><span><b>Review replies written for you,</b> ready to approve in one tap.</span></li>
+            <li class="base"><span><b>Everything in Standard,</b> plus:</span></li>
+            <li class="extra"><span><b>Local press releases</b> and pitching to local news.<span class="xtra">Extra</span></span></li>
+            <li class="extra"><span><b>Data-led local property stories,</b> with you quoted as the expert.<span class="xtra">Extra</span></span></li>
+            <li class="extra"><span><b>Competitor tracking</b> each month.<span class="xtra">Extra</span></span></li>
+            <li class="extra"><span><b>Fortnightly reports</b> and a monthly strategy call.<span class="xtra">Extra</span></span></li>
+            <li class="extra"><span><b>Priority support.</b><span class="xtra">Extra</span></span></li>
           </ul>
-          <a class="btn btn-signal" href="https://wa.me/447537175345?text=Hi%20Clairson%2C%20I%27m%20interested%20in%20the%20Premium%20plan%20for%20my%20agency.%20Can%20we%20start%20with%20the%20free%20check%3F" target="_blank" rel="noopener">Ask about Premium</a>
+          <a class="btn btn-signal" href="https://wa.me/447537175345?text=Hi%20Clairson%2C%20I%27d%20like%20to%20book%20a%20free%2015-minute%20AI%20visibility%20check%20for%20my%20agency.%20I%27m%20interested%20in%20the%20Premium%20plan." target="_blank" rel="noopener">Book a free 15-minute AI visibility check</a>
         </article>
       </div>
-      <p class="fine" style="margin-top:18px">You pay nothing until you've seen your free check and agreed a plan. The monthly fee starts in month 2 and runs for at least three months, then month to month with 30 days' notice. You can start on Standard and upgrade to Premium later.</p>
+      <p class="fine" style="margin-top:18px">You pay nothing until you've had your free check and agreed a plan. The setup fee is paid in month 1. The monthly fee starts in month 2 and runs for at least three months, then month to month with 30 days' notice. You can start on Standard and move up to Premium later.</p>
 
       <h3 class="compare-title">How Clairson compares</h3>
       <div class="compare" role="table" aria-label="How Clairson compares with a typical AI search agency">
@@ -900,9 +890,9 @@ footer a{color:var(--on-deep)}
       <div class="faq">
         <details><summary>What is AI visibility?</summary><p>It's whether AI assistants like ChatGPT and Google's AI mention your agency when someone asks for a recommendation, and whether what they say about you is accurate.</p></details>
         <details><summary>What does the free check include?</summary><p>We ask the questions landlords and tenants ask on four AI assistants, check your listings on the sites they read, and send you a short report with your top fixes. No cost and no obligation.</p></details>
-        <details><summary>What's the difference between Standard and Premium?</summary><p>Standard fixes how AI sees you: listings, local pages, reviews, a monthly check and your own dashboard. Premium adds an assistant that answers enquiries on your website and WhatsApp when the office is closed, improvements to your current website, and monthly tracking against your top three local rivals.</p></details>
-        <details><summary>When do I pay?</summary><p>The free check costs nothing. If you go ahead, you pay the one-off setup fee in month 1, while we fix your listings, pages and reviews. The monthly fee starts in month 2: £199 for Standard or £399 for Premium.</p></details>
-        <details><summary>What does the enquiry assistant say to people?</summary><p>Only what you approve: your fees, areas, opening hours and answers to common questions. For anything else, it takes the person's details and passes them straight to your branch.</p></details>
+        <details><summary>What's the difference between Standard and Premium?</summary><p>Standard gets you found and described accurately: a full AI audit, your Google, Bing and Apple profiles set up, directories cleaned up, website FAQs and structured data, a review request system and a monthly report. Premium adds local PR (press releases, pitching to local news and property stories with you quoted as the expert), monthly competitor tracking, fortnightly reports, a monthly strategy call and priority support.</p></details>
+        <details><summary>Can you get us into the local news?</summary><p>On Premium we write the stories and pitch them to local news, blogs and "best agents" lists. Editors decide what they run, so we never promise coverage, but we tell you every place we pitched and what came back.</p></details>
+        <details><summary>When do I pay?</summary><p>The free check costs nothing. If you go ahead, you pay the one-off setup fee in month 1, while we fix your listings, pages and reviews. The monthly fee starts in month 2: £199 for Standard or £349 for Premium.</p></details>
         <details><summary>Will you need my passwords?</summary><p>No. You add us as a manager on your Google profile and similar accounts. You stay the owner and can remove us at any time.</p></details>
         <details><summary>Do I have to change my website provider?</summary><p>No. We prepare the pages and code, and your current provider adds them. If you'd like, we can talk to them directly.</p></details>
         <details><summary>How long until I see results?</summary><p>Listing fixes usually show within days to weeks. AI answers can take weeks to months to change, which is why we re-test and report every month.</p></details>
