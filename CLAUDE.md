@@ -13,6 +13,7 @@ The business brain (pricing logic, rules, audit method, leads, team) lives in th
 - Day/night toggle defaults to day and remembers the visitor's choice. Mobile menu below 820px.
 - Plan buttons open WhatsApp with the plan name filled in.
 - Privacy notice at `#privacy`. Keep it accurate if what the site collects changes.
+- Terms page at `/terms/` (built by `site/terms.py` in the private repo): plans, payments, minimum term, upgrades (pay the full setup-fee difference, £700, before Premium starts; Premium monthly from the next billing date; can't upgrade by paying the monthly rate alone), founding offer, what we don't promise. FAQ "Can I switch from Standard to Premium?" says the same. Keep all three (pricing, FAQ, terms) in line.
 
 ## Rules for edits
 - Never invent testimonials, client names, statistics, logos or results.
