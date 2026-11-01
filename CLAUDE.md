@@ -8,7 +8,8 @@ The business brain (pricing logic, rules, audit method, leads, team) lives in th
 - One file: `index.html` (inline CSS and JS, no build tools). `.nojekyll` makes Pages serve files as they are.
 - Brand: Clairson, "Be seen clearly by AI". Founder: Isreal Jackson.
 - Contact: phone/WhatsApp 07537 175345, email clairson.uk@gmail.com (also in the JSON-LD).
-- Public prices: free check; Standard £500 setup in month 1, then £199 a month; Premium £1,200 setup, then £399 a month; three-month minimum.
+- Public prices: free 15-minute check; Standard £500 setup in month 1, then £199 a month; Premium £1,200 setup, then £349 a month; three-month minimum. Founding offer: first 3 clients get the Standard setup for £345, then £199 a month.
+- Premium badge is "Recommended", not "Most popular", until there are clients to back that up.
 - Day/night toggle defaults to day and remembers the visitor's choice. Mobile menu below 820px.
 - Plan buttons open WhatsApp with the plan name filled in.
 - Privacy notice at `#privacy`. Keep it accurate if what the site collects changes.
